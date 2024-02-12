@@ -2,9 +2,16 @@
   import { T, useThrelte } from '@threlte/core'
   import { ContactShadows, Float, Grid, OrbitControls } from '@threlte/extras'
   import { ARButton, RealityAccelerator } from 'ratk';
+  import { onMount } from 'svelte';
 
   const { renderer } = useThrelte()
-  const arButton = document.getElementById('ar-button');
+  let arButton;
+
+  onMount(() => {
+    arButton = document.getElementById('ar-button');
+    console.log(arButton);
+  });
+
 
 ARButton.convertToARButton(arButton, renderer, {
   sessionInit: {
@@ -14,7 +21,6 @@ ARButton.convertToARButton(arButton, renderer, {
 });
 </script>
 
-<button id="ar-button"></button>
 
 <T.PerspectiveCamera
   makeDefault
