@@ -1,7 +1,7 @@
 <script lang="js">
 	import * as THREE from 'three'
 	
-	import { T } from '@threlte/core'
+	import { T,useThrelte } from '@threlte/core'
 	import { useRatk } from '$lib/ratk.js'
 
 	const ratk = useRatk()
@@ -13,10 +13,13 @@
 
 	const vec3 = new THREE.Vector3()
 
-    
-
 	ratk.onPlaneAdded = (plane) => {
 		planes = [...ratk.planes]
+
+		if (planes.size == 0) {
+			const { renderer } = useThrelte()
+				renderer.xr.getSession().initiateRoomCapture();
+			}
 
         console.log(planes)
 
