@@ -2,11 +2,13 @@
   import { T, useTask } from '@threlte/core'
   import { ContactShadows, Float, Grid, OrbitControls } from '@threlte/extras'
   import { createRatk } from '$lib/ratk'
+  import Planes from './Planes.svelte';
 
   createRatk()
 
 </script>
 
+<Planes />
 
 <T.PerspectiveCamera
   makeDefault
