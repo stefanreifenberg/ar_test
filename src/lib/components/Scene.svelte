@@ -1,18 +1,9 @@
 <script>
   import { T, useTask } from '@threlte/core'
   import { ContactShadows, Float, Grid, OrbitControls } from '@threlte/extras'
-  import { useRatk } from '$lib/ratk'
   import { createRatk } from '$lib/ratk'
 
   createRatk()
-
-  // const ratk = useRatk()
-  // const { start, stop } = useTask((ctx) => {
-  //   //const session = ctx.renderer.xr.getSession()
-  
-  //   console.log('ratk', ratk)
-  // })
-
 
 </script>
 
