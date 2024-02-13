@@ -9,10 +9,11 @@ export const createRatk = () => {
 	const ratk = new RealityAccelerator(renderer.xr)
 	useTask(() => ratk.update())
 	setTimeout(() => {
-		if (ratk.planes.size == 0) {
-			console.log('initiateRoomCapture')
-			renderer.xr.getSession().initiateRoomCapture();
-		}
+		// if (ratk.planes.size == 0) {
+		// 	console.log('initiateRoomCapture')
+		// 	renderer.xr.getSession().initiateRoomCapture();
+		// }
+		renderer.xr.getSession().initiateRoomCapture();
 	}, 5000);
 	setContext(key, ratk)
 }
