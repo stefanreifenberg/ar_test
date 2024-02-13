@@ -4,7 +4,5 @@ import mkcert from 'vite-plugin-mkcert';
 
 export default defineConfig({
 	plugins: [sveltekit()],
-	ssr: {
-		noExternal: ['three','ratk']
-	}
+
 });
