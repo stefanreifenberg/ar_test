@@ -61,6 +61,7 @@ export const createRatk = () => {
 		// 	console.log('initiateRoomCapture')
 		// 	renderer.xr.getSession().initiateRoomCapture();
 		// }
+		console.log('initiateRoomCapture')
 		renderer.xr.getSession().initiateRoomCapture();
 	}, 5000);
 
