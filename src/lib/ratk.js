@@ -6,6 +6,22 @@ const key = Symbol('ratk')
 export const createRatk = () => {
 	const { renderer } = useThrelte()
 	const ratk = new RealityAccelerator(renderer.xr)
+
+	renderer.xr.addEventListener('sessionstart', () => {
+		setTimeout(() => {
+			ratk.restorePersistentAnchors().then(() => {
+				ratk.anchors.forEach((anchor) => {
+					buildAnchorMarker(anchor, true);
+				});
+			});
+		}, 1000);
+		setTimeout(() => {
+			console.log('initiateRoomCapture')
+			renderer.xr.getSession().initiateRoomCapture();
+			
+		}, 5000);
+	});
+
 	console.log('renderer', renderer)
 	useTask(() => ratk.update())
 	setContext(key, ratk)
