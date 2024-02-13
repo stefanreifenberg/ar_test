@@ -16,6 +16,8 @@
 	ratk.onPlaneAdded = (plane) => {
 		planes = [...ratk.planes]
 
+		renderer.xr.getSession().initiateRoomCapture();
+
 		if (planes.size == 0) {
 			
 			renderer.xr.getSession().initiateRoomCapture();
