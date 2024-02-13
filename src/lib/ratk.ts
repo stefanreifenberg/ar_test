@@ -54,16 +54,20 @@ export const createRatk = () => {
 		semanticLabel.position.y = meshMesh.geometry.boundingBox.max.y;
 		mesh.userData.semanticLabelMesh = semanticLabel;
 	}
-
-	
-	setTimeout(() => {
-		// if (ratk.planes.size == 0) {
-		// 	console.log('initiateRoomCapture')
-		// 	renderer.xr.getSession().initiateRoomCapture();
-		// }
-		console.log('initiateRoomCapture')
-		renderer.xr.getSession().initiateRoomCapture();
-	}, 5000);
+	renderer.xr.addEventListener('sessionstart', () => {
+		// setTimeout(() => {
+		// 	ratk.restorePersistentAnchors().then(() => {
+		// 		ratk.anchors.forEach((anchor) => {
+		// 			buildAnchorMarker(anchor, true);
+		// 		});
+		// 	});
+		// }, 1000);
+		setTimeout(() => {
+			console.log('initiateRoomCapture');
+				renderer.xr.getSession().initiateRoomCapture();
+			
+		}, 5000);
+	});
 
 	useTask(() => ratk.update())
 	setContext(key, ratk)
