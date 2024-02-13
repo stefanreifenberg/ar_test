@@ -1,22 +1,6 @@
 import { getContext, setContext } from 'svelte'
 import { RealityAccelerator } from 'ratk'
 import { useThrelte, useTask } from '@threlte/core'
-import {
-	BoxGeometry,
-	BufferGeometry,
-	DirectionalLight,
-	HemisphereLight,
-	Line,
-	Mesh,
-	MeshBasicMaterial,
-	PerspectiveCamera,
-	Scene,
-	SphereGeometry,
-	Vector3,
-	WebGLRenderer,
-} from 'three';
-
-import { Text } from 'troika-three-text';
 
 const key = Symbol('ratk')
 

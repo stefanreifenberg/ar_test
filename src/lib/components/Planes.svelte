@@ -1,6 +1,5 @@
 <script lang="js">
 	import * as THREE from 'three'
-	
 	import { T,useThrelte } from '@threlte/core'
 	import { useRatk } from '$lib/ratk.js'
 
@@ -20,18 +19,16 @@
 		if (planes.size == 0) {
 			
 			renderer.xr.getSession().initiateRoomCapture();
-		} else {
-		
-			renderer.xr.getSession().initiateRoomCapture();
 		}
-
-
-        console.log(planes)
 
 		for (const plane of ratk.planes) {
 			if (plane.planeMesh === undefined) {
 				continue
 			}
+			plane.planeMesh.material = new THREE.MeshBasicMaterial({
+				wireframe: true,
+				color: Math.random() * 0xffffff,
+			});
 
 			plane.planeMesh.geometry.computeBoundingBox()
 		}
@@ -75,7 +72,7 @@
 </script>
 
 {#each walls as wall}
-	<T is={wall} />
+	<T is={wall} visible={true}/>
 {/each}
 
 {#if enabled}
@@ -86,7 +83,5 @@
 
 {#each planes as plane}
 	{@const size = plane.planeMesh?.geometry.boundingBox?.getSize(vec3) ?? { x: 0, z: 0 }}
-	<T is={plane} visible={true}>
-		
-	</T>
+	<T is={plane} visible={true} />
 {/each}
