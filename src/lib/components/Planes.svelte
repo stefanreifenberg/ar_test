@@ -6,6 +6,7 @@
 
 	const ratk = useRatk()
 	const group = new THREE.Group()
+	const { renderer } = useThrelte()
 
 	let enabled = false
 	let planes = []
@@ -17,11 +18,11 @@
 		planes = [...ratk.planes]
 
 		if (planes.size == 0) {
-			const { renderer } = useThrelte()
-				renderer.xr.getSession().initiateRoomCapture();
+			
+			renderer.xr.getSession().initiateRoomCapture();
 		} else {
-			const { renderer } = useThrelte()
-				renderer.xr.getSession().initiateRoomCapture();
+		
+			renderer.xr.getSession().initiateRoomCapture();
 		}
 
 
@@ -85,7 +86,7 @@
 
 {#each planes as plane}
 	{@const size = plane.planeMesh?.geometry.boundingBox?.getSize(vec3) ?? { x: 0, z: 0 }}
-	<T is={plane} visible={false}>
+	<T is={plane} visible={true}>
 		
 	</T>
 {/each}
