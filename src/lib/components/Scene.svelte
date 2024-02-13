@@ -4,7 +4,7 @@
   import { createRatk } from '$lib/ratk'
   import Planes from './Planes.svelte';
 
-  createRatk()
+ // createRatk()
 
 </script>
 
