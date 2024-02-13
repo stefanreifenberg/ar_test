@@ -19,7 +19,11 @@
 		if (planes.size == 0) {
 			const { renderer } = useThrelte()
 				renderer.xr.getSession().initiateRoomCapture();
-			}
+		} else {
+			const { renderer } = useThrelte()
+				renderer.xr.getSession().initiateRoomCapture();
+		}
+
 
         console.log(planes)
 
