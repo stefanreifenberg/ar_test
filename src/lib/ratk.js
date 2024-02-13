@@ -1,12 +1,30 @@
 import { getContext, setContext } from 'svelte'
 import { RealityAccelerator } from 'ratk'
 import { useThrelte, useTask } from '@threlte/core'
+import {
+	BoxGeometry,
+	BufferGeometry,
+	DirectionalLight,
+	HemisphereLight,
+	Line,
+	Mesh,
+	MeshBasicMaterial,
+	PerspectiveCamera,
+	Scene,
+	SphereGeometry,
+	Vector3,
+	WebGLRenderer,
+} from 'three';
+
+import { Text } from 'troika-three-text';
+
 const key = Symbol('ratk')
 
 export const createRatk = () => {
 	const { renderer } = useThrelte()
 	const ratk = new RealityAccelerator(renderer.xr)
-
+	ratk.onPlaneAdded = handlePlaneAdded;
+	ratk.onMeshAdded = handleMeshAdded;
 	renderer.xr.addEventListener('sessionstart', () => {
 		setTimeout(() => {
 			ratk.restorePersistentAnchors().then(() => {
@@ -16,9 +34,9 @@ export const createRatk = () => {
 			});
 		}, 1000);
 		setTimeout(() => {
-			
+			if (ratk.planes.size == 0) {
 				renderer.xr.getSession().initiateRoomCapture();
-			
+			}
 		}, 5000);
 	});
 	useTask(() => ratk.update())
