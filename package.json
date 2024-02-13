@@ -21,6 +21,7 @@
   },
   "type": "module",
   "dependencies": {
-    "ratk": "^0.3.0"
+    "ratk": "^0.3.0",
+    "troika-three-text": "^0.49.0"
   }
 }
