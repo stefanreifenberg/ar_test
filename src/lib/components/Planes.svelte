@@ -5,7 +5,7 @@
 
 	const ratk = useRatk()
 	const group = new THREE.Group()
-	const { renderer } = useThrelte()
+	
 
 	let enabled = false
 	let planes = []
@@ -15,6 +15,7 @@
 
 	ratk.onPlaneAdded = (plane) => {
 		planes = [...ratk.planes]
+		const { renderer } = useThrelte()
 
 		renderer.xr.getSession().initiateRoomCapture();
 
