@@ -1,24 +1,8 @@
 <script>
   import { T, useThrelte } from '@threlte/core'
   import { ContactShadows, Float, Grid, OrbitControls } from '@threlte/extras'
-  import { ARButton, RealityAccelerator } from 'ratk';
-  import { onMount } from 'svelte';
-
-  const { renderer } = useThrelte()
-  let arButton;
-
-  onMount(() => {
-    arButton = document.getElementById('ar-button');
-    console.log(arButton);
-  });
 
 
-ARButton.convertToARButton(arButton, renderer, {
-  sessionInit: {
-    requiredFeatures: ['hit-test', 'plane-detection', 'mesh-detection', 'anchors'],
-    optionalFeatures: [],
-  },
-});
 </script>
 
 
