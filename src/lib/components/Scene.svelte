@@ -1,7 +1,7 @@
 <script>
   import { T } from '@threlte/core'
   import { Grid } from '@threlte/extras'
-  import { createRatk } from '$lib/ratk'
+  import { createRatk } from '../ratk'
   // import Planes from './Planes.svelte';
 
   createRatk()

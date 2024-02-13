@@ -1,4 +1,4 @@
-<script lang="js">
+<script>
 	import * as THREE from 'three'
 	
 	import { T } from '@threlte/core'
