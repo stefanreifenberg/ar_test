@@ -4,6 +4,9 @@
   import { ARButton } from '@threlte/xr'
   import XR from '$lib/components/XR.svelte'
   
+
+
+  
 </script>
 
 <Canvas>
