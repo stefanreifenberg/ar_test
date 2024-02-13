@@ -13,8 +13,12 @@
 
 	const vec3 = new THREE.Vector3()
 
+    
+
 	ratk.onPlaneAdded = (plane) => {
 		planes = [...ratk.planes]
+
+        console.log(planes)
 
 		for (const plane of ratk.planes) {
 			if (plane.planeMesh === undefined) {

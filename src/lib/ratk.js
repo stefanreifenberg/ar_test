@@ -6,7 +6,7 @@ const key = Symbol('ratk')
 export const createRatk = () => {
 	const { renderer } = useThrelte()
 	const ratk = new RealityAccelerator(renderer.xr)
-	console.log('ratk', ratk)
+	console.log('renderer', renderer)
 	useTask(() => ratk.update())
 	setContext(key, ratk)
 }
