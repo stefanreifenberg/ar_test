@@ -1,10 +1,8 @@
 <script lang="js">
 	import * as THREE from 'three'
-	import { Plane } from 'ratk'
+	
 	import { T } from '@threlte/core'
 	import { useRatk } from '$lib/ratk.js'
-
-	
 
 	const ratk = useRatk()
 	const group = new THREE.Group()
@@ -61,17 +59,7 @@
 		enabled = true
 	}
 
-	const handleEnter = (event) => {
-		const { handle } = event.targetRigidBody
-
-		if (inPortal.has(handle)) return
-
-		const body = world.bodies.get(event.targetRigidBody.handle)
-
-		if (body === null) return
-
-		hideBody(body)
-	}
+	
 </script>
 
 {#each walls as wall}

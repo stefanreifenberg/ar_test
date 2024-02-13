@@ -1,6 +1,6 @@
 <script>
-  import { T, useTask } from '@threlte/core'
-  import { ContactShadows, Float, Grid, OrbitControls } from '@threlte/extras'
+  import { T } from '@threlte/core'
+  import { Grid } from '@threlte/extras'
   import { createRatk } from '$lib/ratk'
   import Planes from './Planes.svelte';
 
@@ -9,18 +9,6 @@
 </script>
 
 <Planes />
-
-<T.PerspectiveCamera
-  makeDefault
-  position={[-10, 10, 10]}
-  fov={15}
->
-  <OrbitControls
-    enableZoom={true}
-    enableDamping
-    target.y={1.5}
-  />
-</T.PerspectiveCamera>
 
 <T.DirectionalLight
   intensity={0.8}
