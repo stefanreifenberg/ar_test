@@ -7,7 +7,7 @@
 	const group = new THREE.Group()
 	
 
-	let enabled = false
+	let enabled = true
 	let planes = []
 	let walls = []
 
@@ -15,19 +15,8 @@
 
 	ratk.onPlaneAdded = (plane) => {
 		planes = [...ratk.planes]
-		const { renderer } = useThrelte()
-
-		renderer.xr.getSession().initiateRoomCapture();
-
-		if (planes.size == 0) {
-			
-			renderer.xr.getSession().initiateRoomCapture();
-		}
 
 		for (const plane of ratk.planes) {
-			if (plane.planeMesh === undefined) {
-				continue
-			}
 			plane.planeMesh.material = new THREE.MeshBasicMaterial({
 				wireframe: true,
 				color: Math.random() * 0xffffff,
@@ -36,20 +25,9 @@
 			plane.planeMesh.geometry.computeBoundingBox()
 		}
 
-		// @ts-expect-error
-		const xrPlane = plane._xrPlane
-
-		if (xrPlane.orientation !== 'vertical') {
-			return
-		}
-
 		walls.splice(0, walls.length)
 
 		for (const plane of ratk.planes) {
-			if (xrPlane.orientation !== 'vertical') {
-				continue
-			}
-
 			if (plane.planeMesh === undefined) {
 				continue
 			}
