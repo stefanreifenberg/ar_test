@@ -1,6 +1,9 @@
 <script>
   import { T, useThrelte } from '@threlte/core'
   import { ContactShadows, Float, Grid, OrbitControls } from '@threlte/extras'
+  import { useRatk } from '$lib/ratk'
+
+  const ratk = useRatk()
 
 
 </script>
