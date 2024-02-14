@@ -10,7 +10,7 @@
 </script>
 
 <Meshes />
-<Planes />
+<!-- <Planes /> -->
 
 
 <T.DirectionalLight
