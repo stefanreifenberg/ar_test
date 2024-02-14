@@ -17,6 +17,8 @@
 	ratk.onMeshAdded = (mesh) => {
 		meshes = [...ratk.meshes]
 
+		console.log("onMeshAdded", meshes)
+
 		for (const mesh of ratk.meshes) {
 			mesh.meshMesh.material = new THREE.MeshBasicMaterial({
                 wireframe: true,

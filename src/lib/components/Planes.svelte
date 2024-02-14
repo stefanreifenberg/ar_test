@@ -49,6 +49,9 @@
 		enabled = true
 	}
 
+    console.log('planes', planes)
+    console.log('walls', walls)
+
 	
 </script>
 
