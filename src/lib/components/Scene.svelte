@@ -3,12 +3,14 @@
   import { Grid } from '@threlte/extras'
   import { createRatk } from '../ratk'
   import Planes from './Planes.svelte';
+  import Meshes from './Meshes.svelte';
 
   createRatk()
 
 </script>
 
 <Planes />
+<Meshes />
 
 <T.DirectionalLight
   intensity={0.8}
