@@ -14,12 +14,11 @@
 	const vec3 = new THREE.Vector3()
 
 	ratk.onPlaneAdded = (plane) => {
+        console.log("ratk.planes", ratk.planes)
+
 		planes = [...ratk.planes]
 
-        console.log("onPlaneAdded", planes)
-
 		for (const plane of ratk.planes) {
-            console.log("onPlaneAdded", plane)
 			plane.planeMesh.material = new THREE.MeshBasicMaterial({
 				wireframe: true,
 				color: Math.random() * 0xffffff,
@@ -51,9 +50,6 @@
 		group.lookAt(0, 0, 0)
 		enabled = true
 	}
-
-    console.log('planes', planes)
-    console.log('walls', walls)
 
 	
 </script>
