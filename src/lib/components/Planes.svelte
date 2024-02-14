@@ -19,6 +19,7 @@
         console.log("onPlaneAdded", planes)
 
 		for (const plane of ratk.planes) {
+            console.log("onPlaneAdded", plane)
 			plane.planeMesh.material = new THREE.MeshBasicMaterial({
 				wireframe: true,
 				color: Math.random() * 0xffffff,
