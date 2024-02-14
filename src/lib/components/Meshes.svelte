@@ -43,7 +43,7 @@
 			return
 		}
 
-		group.position.set(wall.position.x, 0, wall.position.z)
+		group.position.set(meshTest.position.x, 0, meshTest.position.z)
 		group.lookAt(0, 0, 0)
 		enabled = true
 	}
