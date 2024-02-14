@@ -19,6 +19,11 @@
 		planes = [...ratk.planes]
 
 		for (const plane of ratk.planes) {
+
+            if (plane.planeMesh === undefined) {
+				continue
+			}
+            
 			plane.planeMesh.material = new THREE.MeshBasicMaterial({
 				wireframe: true,
 				color: Math.random() * 0xffffff,

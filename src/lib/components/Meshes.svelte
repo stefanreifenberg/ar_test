@@ -14,16 +14,21 @@
 
 	const vec3 = new THREE.Vector3()
 
-	ratk.onMeshAdded = (rmesh) => {
+	ratk.onMeshAdded = (mesh) => {
 		// convert the ratk.meshes from a Set to an array
 		meshes = [...ratk.meshes]
 
-		console.log("ratk.meshes mesh component", ratk.meshes)
+		//console.log("ratk.meshes mesh component", ratk.meshes)
 		console.log("onMeshAdded", meshes)
 
 		for (const mesh of ratk.meshes) {
 			console.log("onMeshAdded mesh", mesh)
 			console.log("onMeshAdded meshMesh", mesh.meshMesh)
+
+			if (mesh.meshMesh === undefined) {
+				continue
+			}
+
 			mesh.meshMesh.material = new THREE.MeshBasicMaterial({
                 wireframe: true,
                 color: Math.random() * 0xffffff,
