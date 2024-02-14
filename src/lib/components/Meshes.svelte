@@ -20,6 +20,7 @@
 		console.log("onMeshAdded", meshes)
 
 		for (const mesh of ratk.meshes) {
+			console.log("onMeshAdded", mesh)
 			mesh.meshMesh.material = new THREE.MeshBasicMaterial({
                 wireframe: true,
                 color: Math.random() * 0xffffff,
@@ -51,12 +52,6 @@
 		group.lookAt(0, 0, 0)
 		enabled = true
 	}
-
-	ratk.meshes.forEach((rmesh) => {
-		// Process each mesh
-		console.log('rmesh', rmesh)
-	});
-
 	console.log('meshes', meshes)
 	console.log('objects', objects)
 
