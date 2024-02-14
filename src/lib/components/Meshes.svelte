@@ -50,6 +50,9 @@
 		enabled = true
 	}
 
+	console.log('meshes', meshes)
+	console.log('objects', objects)
+
 	
 </script>
 
