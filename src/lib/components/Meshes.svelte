@@ -56,6 +56,13 @@
 	<T is={object} visible={true}/>
 {/each}
 
+{#each objects as object}
+	<T.Mesh>
+		<T.BoxGeometry position={[object.position.x, object.position.y, object.position.z]}/>
+		<T.MeshBasicMaterial />
+	</T.Mesh>
+{/each}
+
 {#if enabled}
 	<T is={group}>
 		<slot />

@@ -7,7 +7,7 @@
 	const group = new THREE.Group()
 	
 
-	let enabled = true
+	let enabled = false
 	let planes = []
 	let walls = []
 
