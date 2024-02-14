@@ -18,6 +18,7 @@ export const createRatk = () => {
 		}, 1000);
 		setTimeout(() => {
 			console.log("ratk.meshes.size",ratk.meshes.size)
+			console.log("ratk.meshes", ratk.meshes)
 			if (ratk.meshes.size == 0) {
 				renderer.xr.getSession().initiateRoomCapture();
 			} 
