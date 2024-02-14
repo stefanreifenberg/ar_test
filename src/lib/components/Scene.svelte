@@ -9,8 +9,9 @@
 
 </script>
 
-<Planes />
 <Meshes />
+<Planes />
+
 
 <T.DirectionalLight
   intensity={0.8}
