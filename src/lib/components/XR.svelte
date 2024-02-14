@@ -4,7 +4,7 @@
 	import { OrbitControls } from '@threlte/extras'
 	import { XR, Controller, Hand, useHitTest } from '@threlte/xr'
   
-	const geometry = new THREE.CylinderGeometry(0.1, 0.1, 0.2, 32).translate(0, 0.1, 0)
+	const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05)
   
 	let meshes: THREE.Mesh[] = []
 	let cursors = { left: undefined! as THREE.Mesh, right: undefined! as THREE.Mesh }
@@ -15,10 +15,13 @@
 	const handleSelect = (hand: Hands) => () => {
 	  if (!cursors[hand].visible) return
   
-	  const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random() })
+	  const material = new THREE.MeshBasicMaterial({
+		//color: isRecovered ? 0xff0000 : 0x00ff00,
+		color: 0x00ff00,
+	});
 	  const mesh = new THREE.Mesh(geometry, material)
 	  cursors[hand].matrix.decompose(mesh.position, mesh.quaternion, mesh.scale)
-	  mesh.scale.y = Math.random() * 2 + 1
+	  //mesh.scale.y = Math.random() * 2 + 1
 	  meshes.push(mesh)
 	  meshes = meshes
 	}
@@ -63,22 +66,20 @@
   bind:ref={cursors.left}
   matrixAutoUpdate={false}
 >
-  <T.RingGeometry
-    args={[0.15, 0.2, 32]}
-    on:create={({ ref }) => ref.rotateX(-Math.PI / 2)}
-  />
-  <T.MeshBasicMaterial />
+	<T.SphereGeometry
+	args={[0.05]}
+	/>
+	<T.MeshBasicMaterial transparent opacity={0.5}/>
 </T.Mesh>
 
 <T.Mesh
   bind:ref={cursors.right}
   matrixAutoUpdate={false}
 >
-  <T.RingGeometry
-    args={[0.15, 0.2, 32]}
-    on:create={({ ref }) => ref.rotateX(-Math.PI / 2)}
+  <T.SphereGeometry
+    args={[0.05]}
   />
-  <T.MeshBasicMaterial />
+  <T.MeshBasicMaterial transparent opacity={0.5}/>
 </T.Mesh>
 
 <T.HemisphereLight
