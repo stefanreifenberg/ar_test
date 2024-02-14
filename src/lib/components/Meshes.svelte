@@ -108,6 +108,8 @@
 	}
 </script>
 
+
+
 {#each objects as object}
 	<T is={object} visible={true}/>
 {/each}
