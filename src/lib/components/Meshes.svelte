@@ -15,6 +15,9 @@
 	const vec3 = new THREE.Vector3()
 
 	ratk.onMeshAdded = (mesh) => {
+
+		console.log("ratk.meshes onMeshAdded", ratk.meshes)
+
 		// convert the ratk.meshes from a Set to an array
 		meshes = [...ratk.meshes]
 
