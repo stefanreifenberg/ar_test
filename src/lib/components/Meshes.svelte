@@ -9,6 +9,7 @@
 
 	let enabled = true
 	let meshes = []
+    let objects = []
 
 	const vec3 = new THREE.Vector3()
 
@@ -24,26 +25,26 @@
 			meshMesh.geometry.computeBoundingBox();
 		}
 
-		meshes.splice(0, meshes.length)
+		objects.splice(0, objects.length)
 
 		for (const mesh of ratk.meshes) {
 			if (mesh.planeMesh === undefined) {
 				continue
 			}
 
-			meshes.push(mesh)
+			objects.push(mesh)
 		}
 
-		meshes = meshes
+		objects = objects
 
-		const [meshTest] = meshes
+		const [object] = objects
 
-		if (!meshTest) {
-			enabled = false
+		if (!object) {
+			enabled = true
 			return
 		}
 
-		group.position.set(meshTest.position.x, 0, meshTest.position.z)
+		group.position.set(object.position.x, 0, object.position.z)
 		group.lookAt(0, 0, 0)
 		enabled = true
 	}
@@ -51,8 +52,8 @@
 	
 </script>
 
-{#each meshes as mesh}
-	<T is={mesh} visible={true}/>
+{#each objects as object}
+	<T is={object} visible={true}/>
 {/each}
 
 {#if enabled}
