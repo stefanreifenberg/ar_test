@@ -44,7 +44,7 @@
 			return
 		}
 
-		group.position.set(object.position.x, 0, object.position.z)
+		group.position.set(object.position.x, object.position.y, object.position.z)
 		group.lookAt(0, 0, 0)
 		enabled = true
 	}
