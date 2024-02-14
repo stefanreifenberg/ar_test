@@ -22,7 +22,7 @@
                 color: Math.random() * 0xffffff,
             });
 
-			meshMesh.geometry.computeBoundingBox();
+			mesh.geometry.computeBoundingBox();
 		}
 
 		objects.splice(0, objects.length)
