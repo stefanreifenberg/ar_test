@@ -10,18 +10,14 @@
 
 	let enabled = true
 	let meshes = []
-	console.log("top level meshes", meshes)
     let objects = []
 
 	const vec3 = new THREE.Vector3()
 
 	ratk.onMeshAdded = (mesh) => {
 
-		console.log("ratk.meshes onMeshAdded", ratk.meshes)
-
 		// wait for 5 seconds before adding the mesh
 		setTimeout(() => {
-			console.log("ratk.meshes onMeshAdded", ratk.meshes)
 			meshes = [...ratk.meshes]
 
 			for (const mesh of ratk.meshes) {
@@ -60,51 +56,6 @@
 			group.lookAt(0, 0, 0)
 			enabled = true
 		}, 5000)
-
-		// // convert the ratk.meshes from a Set to an array
-		// meshes = [...ratk.meshes]
-
-		// //console.log("ratk.meshes mesh component", ratk.meshes)
-		// console.log("onMeshAdded", meshes)
-
-		// for (const mesh of ratk.meshes) {
-		// 	console.log("onMeshAdded mesh", mesh)
-		// 	console.log("onMeshAdded meshMesh", mesh.meshMesh)
-
-		// 	if (mesh.meshMesh === undefined) {
-		// 		continue
-		// 	}
-
-		// 	mesh.meshMesh.material = new THREE.MeshBasicMaterial({
-        //         wireframe: true,
-        //         color: Math.random() * 0xffffff,
-        //     });
-
-		// 	mesh.geometry.computeBoundingBox();
-		// }
-
-		// objects.splice(0, objects.length)
-
-		// for (const mesh of ratk.meshes) {
-		// 	if (mesh.meshMesh === undefined) {
-		// 		continue
-		// 	}
-
-		// 	objects.push(mesh)
-		// }
-
-		// objects = objects
-
-		// const [object] = objects
-
-		// if (!object) {
-		// 	enabled = false
-		// 	return
-		// }
-
-		// group.position.set(object.position.x, object.position.y, object.position.z)
-		// group.lookAt(0, 0, 0)
-		// enabled = true
 	}
 </script>
 

@@ -1,38 +1,62 @@
-<script lang="ts">
+<script>
 	import * as THREE from 'three'
 	import { T } from '@threlte/core'
 	import { OrbitControls } from '@threlte/extras'
 	import { XR, Controller, Hand, useHitTest } from '@threlte/xr'
+	import { useRatk } from '$lib/ratk.js'
+
+	const ratk = useRatk()
+	let pendingAnchorsData = []
+
+	function buildAnchorMarker(anchor, isRecovered) {
+		const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
+		const material = new THREE.MeshBasicMaterial({
+			color: isRecovered ? 0xff0000 : 0x00ff00,
+		});
+		const cube = new THREE.Mesh(geometry, material);
+		anchor.add(cube);
+		console.log(
+			`anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
+		);
+	}
   
 	const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05)
   
-	let meshes: THREE.Mesh[] = []
-	let cursors = { left: undefined! as THREE.Mesh, right: undefined! as THREE.Mesh }
+	let meshes = []
+	let cursors = { left: THREE.Mesh, right: THREE.Mesh }
   
-	const hands = ['left', 'right'] as const
-	type Hands = (typeof hands)[number]
+	const hands = ['left', 'right']
+	//type Hands = (typeof hands)[number]
   
-	const handleSelect = (hand: Hands) => () => {
+	const handleSelect = (hand) => () => {
 	  if (!cursors[hand].visible) return
   
-	  const material = new THREE.MeshBasicMaterial({
-		//color: isRecovered ? 0xff0000 : 0x00ff00,
-		color: 0x00ff00,
-	});
-	  const mesh = new THREE.Mesh(geometry, material)
+	//   const material = new THREE.MeshBasicMaterial({
+	// 	//color: isRecovered ? 0xff0000 : 0x00ff00,
+	// 	color: 0x00ff00,
+	// 	});
+	  //const mesh = new THREE.Mesh(geometry, material)
+	  //buildAnchorMarker(cursors[hand], false)
 	  cursors[hand].matrix.decompose(mesh.position, mesh.quaternion, mesh.scale)
+	  console.log('cursors[hand]', cursors[hand])
 	  //mesh.scale.y = Math.random() * 2 + 1
-	  meshes.push(mesh)
-	  meshes = meshes
+	  //meshes.push(mesh)
+	  //meshes = meshes
 	}
   
 	const handleHitTest =
-	  (hand: Hands) => (hitMatrix: THREE.Matrix4, hit: XRHitTestResult | undefined) => {
+	  (hand) => (hitMatrix, hit) => {
 		if (!cursors[hand]) return
   
 		if (hit) {
 		  cursors[hand].visible = true
 		  cursors[hand].matrix.copy(hitMatrix)
+		  console.log('hit', hit)
+
+		//   pendingAnchorData = {
+		// 	position: this.hitTestTarget.position.clone(),
+		// 	quaternion: this.hitTestTarget.quaternion.clone(),
+		// 	};
 		} else {
 		  cursors[hand].visible = false
 		}
