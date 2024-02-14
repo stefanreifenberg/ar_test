@@ -16,7 +16,8 @@ export const createRatk = () => {
 			});
 		}, 1000);
 		setTimeout(() => {
-			if (ratk.planes.size == 0 && ratk.meshes.size == 0) {
+			console.log(ratk.meshes)
+			if (ratk.meshes.size == 0) {
 				renderer.xr.getSession().initiateRoomCapture();
 			} 
 		}, 5000);
