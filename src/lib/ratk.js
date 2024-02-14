@@ -8,6 +8,7 @@ export const createRatk = () => {
 	const { renderer } = useThrelte()
 	const ratk = new RealityAccelerator(renderer.xr)
 	renderer.xr.addEventListener('sessionstart', () => {
+		console.log('sessionstart')
 		setTimeout(() => {
 			ratk.restorePersistentAnchors().then(() => {
 				ratk.anchors.forEach((anchor) => {
@@ -16,7 +17,7 @@ export const createRatk = () => {
 			});
 		}, 1000);
 		setTimeout(() => {
-			console.log(ratk.meshes)
+			console.log("ratk.meshes.size",ratk.meshes.size)
 			if (ratk.meshes.size == 0) {
 				renderer.xr.getSession().initiateRoomCapture();
 			} 
