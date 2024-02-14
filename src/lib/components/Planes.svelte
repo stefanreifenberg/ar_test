@@ -16,6 +16,8 @@
 	ratk.onPlaneAdded = (plane) => {
 		planes = [...ratk.planes]
 
+        console.log("onPlaneAdded", planes)
+
 		for (const plane of ratk.planes) {
 			plane.planeMesh.material = new THREE.MeshBasicMaterial({
 				wireframe: true,
