@@ -28,7 +28,7 @@
 		objects.splice(0, objects.length)
 
 		for (const mesh of ratk.meshes) {
-			if (mesh.planeMesh === undefined) {
+			if (mesh.meshMesh === undefined) {
 				continue
 			}
 
@@ -40,7 +40,7 @@
 		const [object] = objects
 
 		if (!object) {
-			enabled = true
+			enabled = false
 			return
 		}
 
