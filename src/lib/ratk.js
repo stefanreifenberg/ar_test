@@ -25,39 +25,6 @@ export const createRatk = () => {
 	setContext(key, ratk)
 }
 
-/**
- * Handles the addition of a new plane detected by RATK.
- */
-function handlePlaneAdded(plane) {
-	const mesh = plane.planeMesh;
-	mesh.material = new MeshBasicMaterial({
-		wireframe: true,
-		color: Math.random() * 0xffffff,
-	});
-}
-
-/**
- * Handles the addition of a new mesh detected by RATK.
- */
-function handleMeshAdded(mesh) {
-	const meshMesh = mesh.meshMesh;
-	meshMesh.material = new MeshBasicMaterial({
-		wireframe: true,
-		color: Math.random() * 0xffffff,
-	});
-	meshMesh.geometry.computeBoundingBox();
-	const semanticLabel = new Text();
-	meshMesh.add(semanticLabel);
-	semanticLabel.text = mesh.semanticLabel;
-	semanticLabel.anchorX = 'center';
-	semanticLabel.anchorY = 'bottom';
-	semanticLabel.fontSize = 0.1;
-	semanticLabel.color = 0x000000;
-	semanticLabel.sync();
-	semanticLabel.position.y = meshMesh.geometry.boundingBox.max.y;
-	mesh.userData.semanticLabelMesh = semanticLabel;
-}
-
 export const useRatk = () => {
 	return getContext(key)
 }

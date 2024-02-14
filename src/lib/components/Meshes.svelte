@@ -14,7 +14,7 @@
 
 	const vec3 = new THREE.Vector3()
 
-	ratk.onMeshAdded = (mesh) => {
+	ratk.onMeshAdded = (rmesh) => {
 		meshes = [...ratk.meshes]
 
 		console.log("onMeshAdded", meshes)
@@ -51,6 +51,11 @@
 		group.lookAt(0, 0, 0)
 		enabled = true
 	}
+
+	ratk.meshes.forEach((rmesh) => {
+		// Process each mesh
+		console.log('rmesh', rmesh)
+	});
 
 	console.log('meshes', meshes)
 	console.log('objects', objects)
