@@ -17,6 +17,7 @@
 	ratk.onMeshAdded = (rmesh) => {
 		meshes = [...ratk.meshes]
 
+		console.log("ratk.meshes mesh component", ratk.meshes)
 		console.log("onMeshAdded", meshes)
 
 		for (const mesh of ratk.meshes) {
