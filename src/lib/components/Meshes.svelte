@@ -2,6 +2,7 @@
 	import * as THREE from 'three'
 	import { T,useThrelte } from '@threlte/core'
 	import { useRatk } from '$lib/ratk.js'
+	import { Text } from '@threlte/extras'
 
 	const ratk = useRatk()
 	const group = new THREE.Group()
@@ -54,6 +55,14 @@
 
 {#each objects as object}
 	<T is={object} visible={true}/>
+	<Text
+	{object}
+	color="white"
+	fontSize={1}
+	anchorX="50%"
+	anchorY="100%"
+	/>
+
 {/each}
 
 {#if enabled}
