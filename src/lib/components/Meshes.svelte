@@ -55,14 +55,6 @@
 
 {#each objects as object}
 	<T is={object} visible={true}/>
-	<Text
-	{object}
-	color="white"
-	fontSize={1}
-	anchorX="50%"
-	anchorY="100%"
-	/>
-
 {/each}
 
 {#if enabled}
