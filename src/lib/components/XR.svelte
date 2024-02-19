@@ -37,7 +37,7 @@
 	// 	});
 	  //const mesh = new THREE.Mesh(geometry, material)
 	  //buildAnchorMarker(cursors[hand], false)
-	  cursors[hand].matrix.decompose(mesh.position, mesh.quaternion, mesh.scale)
+	  //cursors[hand].matrix.decompose(mesh.position, mesh.quaternion, mesh.scale)
 	  console.log('cursors[hand]', cursors[hand])
 	  //mesh.scale.y = Math.random() * 2 + 1
 	  //meshes.push(mesh)
