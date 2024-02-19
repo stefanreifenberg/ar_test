@@ -50,9 +50,6 @@
 		if (hit) {
 		  cursors[hand].visible = true
 		  cursors[hand].matrix.copy(hitMatrix)
-		  console.log('hit', hit)
-
-		
 		} else {
 		  cursors[hand].visible = false
 		}
