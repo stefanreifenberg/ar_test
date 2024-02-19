@@ -30,18 +30,17 @@
   
 	const handleSelect = (hand) => () => {
 	  if (!cursors[hand].visible) return
-  
-	//   const material = new THREE.MeshBasicMaterial({
-	// 	//color: isRecovered ? 0xff0000 : 0x00ff00,
-	// 	color: 0x00ff00,
-	// 	});
-	  //const mesh = new THREE.Mesh(geometry, material)
-	  //buildAnchorMarker(cursors[hand], false)
-	  //cursors[hand].matrix.decompose(mesh.position, mesh.quaternion, mesh.scale)
-	  console.log('cursors[hand]', cursors[hand])
-	  //mesh.scale.y = Math.random() * 2 + 1
-	  //meshes.push(mesh)
-	  //meshes = meshes
+
+	  console.log('cursors[hand].matrix', cursors[hand].matrix)
+	  console.log('cursors[hand].matrix.decompose(mesh.position)', cursors[hand].matrix.decompose(mesh.position))
+	  console.log('cursors[hand].matrix.decompose(mesh.quaternion)', cursors[hand].matrix.decompose(mesh.quaternion))
+	  
+	  ratk.createAnchor(cursors[hand].matrix.decompose(mesh.position), cursors[hand].matrix.decompose(mesh.quaternion), isPersistent)
+		.then((anchor /* RATK Anchor object extends Object3D */) => {
+			// Attach a new THREE.Mesh to the anchor
+
+			buildAnchorMarker(anchor, false);
+		});
 	}
   
 	const handleHitTest =
@@ -53,10 +52,7 @@
 		  cursors[hand].matrix.copy(hitMatrix)
 		  console.log('hit', hit)
 
-		//   pendingAnchorData = {
-		// 	position: this.hitTestTarget.position.clone(),
-		// 	quaternion: this.hitTestTarget.quaternion.clone(),
-		// 	};
+		
 		} else {
 		  cursors[hand].visible = false
 		}
