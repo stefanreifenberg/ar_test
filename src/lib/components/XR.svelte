@@ -6,7 +6,7 @@
 	import { useRatk } from '$lib/ratk.js'
 
 	const ratk = useRatk()
-	let pendingAnchorsData = []
+	let pendingAnchorsData = null
 
 	function buildAnchorMarker(anchor, isRecovered) {
 		const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
@@ -31,7 +31,7 @@
 	const handleSelect = (hand) => () => {
 	  if (!cursors[hand].visible) return
 
-	  console.log('pendingAnchorData', pendingAnchorData)
+	  console.log('pendingAnchorsData', pendingAnchorsData)
 
 	//   const isPersistent = true
 	//   const isRecovered = false
@@ -77,7 +77,7 @@
 		  cursors[hand].matrix.copy(hitMatrix)
 		  console.log('cursors[hand].matrix', cursors[hand].matrix)
 
-		  pendingAnchorData = {
+		  pendingAnchorsData = {
 			position: cursors[hand].matrix,
 			quaternion: cursors[hand].matrix,
 		  };
