@@ -38,22 +38,22 @@
 
 	  if (pendingAnchorsData) {
 
-		let position = pendingAnchorsData.position.decompose(new THREE.Vector3(), new THREE.Quaternion(), new THREE.Vector3())
-		let quaternion = pendingAnchorsData.quaternion.decompose(new THREE.Vector3(), new THREE.Quaternion(), new THREE.Vector3())
-		console.log('position', position)
-		console.log('quaternion', quaternion)
+		
+		const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random() })
+		const mesh = new THREE.Mesh(geometry, material)
+		pendingAnchorsData.decompose(mesh.position, mesh.quaternion, mesh.scale)
 
 
-		// ratk
-		// 	.createAnchor(
-		// 		pendingAnchorsData.position,
-		// 		pendingAnchorsData.quaternion,
-		// 		true,
-		// 	)
-		// 	.then((anchor) => {
-		// 		buildAnchorMarker(anchor, false);
-		// 	});
-		// 	pendingAnchorsData = null;
+		ratk
+			.createAnchor(
+				mesh.position,
+				mesh.quaternion,
+				true,
+			)
+			.then((anchor) => {
+				buildAnchorMarker(anchor, false);
+			});
+			pendingAnchorsData = null;
 	}
 
 	//   const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
@@ -80,12 +80,7 @@
 	  
 	 
 	  
-	//   ratk.createAnchor(cursors[hand].matrix.decompose(mesh.position), cursors[hand].matrix.decompose(mesh.quaternion), isPersistent)
-	// 	.then((anchor /* RATK Anchor object extends Object3D */) => {
-	// 		// Attach a new THREE.Mesh to the anchor
-
-	// 		buildAnchorMarker(anchor, false);
-	// 	});
+	
 	}
   
 	const handleHitTest =
