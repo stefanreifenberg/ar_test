@@ -41,7 +41,7 @@
 		
 		const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random() })
 		const mesh = new THREE.Mesh(geometry, material)
-		pendingAnchorsData.decompose(mesh.position, mesh.quaternion, mesh.scale)
+		cursors[hand].matrix.decompose(mesh.position, mesh.quaternion, mesh.scale)
 
 
 		ratk
