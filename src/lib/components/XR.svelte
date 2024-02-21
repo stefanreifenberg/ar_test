@@ -74,12 +74,12 @@
 		  cursors[hand].visible = true
 		  cursors[hand].matrix.copy(hitMatrix)
 		  console.log('cursors[hand].matrix', cursors[hand].matrix)
-		  
+
 		//   pendingAnchorData = {
 		// 	position: cursors[hand].matrix.decompose(mesh.position).clone(),
 		// 	quaternion: cursors[hand].matrix.decompose(mesh.quaternion).clone(),
 		//   };
-		 console.log('pendingAnchorData', pendingAnchorData)
+		// console.log('pendingAnchorData', pendingAnchorData)
 		} else {
 		  cursors[hand].visible = false
 		}
