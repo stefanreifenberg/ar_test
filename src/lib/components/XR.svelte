@@ -31,13 +31,24 @@
 	const handleSelect = (hand) => () => {
 	  if (!cursors[hand].visible) return
 
-	  const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random() })
-	  const mesh = new THREE.Mesh(geometry, material)
-	  cursors[hand].matrix.decompose(mesh.position, mesh.quaternion, mesh.scale)
-	  console.log('mesh', mesh)
+	  const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
+		const material = new THREE.MeshBasicMaterial({
+			color: isRecovered ? 0xff0000 : 0x00ff00,
+		});
+		const cube = new THREE.Mesh(geometry, material);
+		anchor.add(cube);
+		console.log(
+			`anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
+		);
+		console.log('ratk.anchors', ratk.anchors)
+
+	  //const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random() })
+	  //const mesh = new THREE.Mesh(geometry, material)
+	  //cursors[hand].matrix.decompose(mesh.position, mesh.quaternion, mesh.scale)
+	  //console.log('mesh', mesh)
 	  //mesh.scale.y = Math.random() * 2 + 1
-	  meshes.push(mesh)
-	  meshes = meshes
+	 // meshes.push(mesh)
+	 // meshes = meshes
 	  
 	 
 	  
