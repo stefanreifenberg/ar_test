@@ -52,16 +52,16 @@
 		console.log("mesh.quaternion", mesh.quaternion)
 
 
-		// ratk
-		// 	.createAnchor(
-		// 		mesh.position,
-		// 		mesh.quaternion,
-		// 		true,
-		// 	)
-		// 	.then((anchor) => {
-		// 		buildAnchorMarker(anchor, false);
-		// 	});
-		// 	pendingAnchorsData = null;
+		ratk
+			.createAnchor(
+				mesh.position,
+				mesh.quaternion,
+				true,
+			)
+			.then((anchor) => {
+				buildAnchorMarker(anchor, false);
+			});
+			pendingAnchorsData = null;
 	}
 
 	//   const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
