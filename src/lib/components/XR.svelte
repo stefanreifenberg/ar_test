@@ -43,17 +43,23 @@
 		const mesh = new THREE.Mesh(geometry, material)
 		cursors[hand].matrix.decompose(mesh.position, mesh.quaternion, mesh.scale)
 
+		// get the mesh position and quaternion
+		// and create an anchor with it
+		// ratk.createAnchor(mesh.position, mesh.quaternion, isPersistent, isRecovered)
 
-		ratk
-			.createAnchor(
-				mesh.position,
-				mesh.quaternion,
-				true,
-			)
-			.then((anchor) => {
-				buildAnchorMarker(anchor, false);
-			});
-			pendingAnchorsData = null;
+		console.log(mesh)
+
+
+		// ratk
+		// 	.createAnchor(
+		// 		mesh.position,
+		// 		mesh.quaternion,
+		// 		true,
+		// 	)
+		// 	.then((anchor) => {
+		// 		buildAnchorMarker(anchor, false);
+		// 	});
+		// 	pendingAnchorsData = null;
 	}
 
 	//   const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
