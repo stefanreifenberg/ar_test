@@ -39,13 +39,13 @@
 			color: isRecovered ? 0xff0000 : 0x00ff00,
 		});
 		const cube = new THREE.Mesh(geometry, material);
-		anchor.add(cube);
+		//anchor.add(cube);
 		meshes.push(cube)
 		meshes = meshes
 
-		console.log(
-			`anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
-		);
+		// console.log(
+		// 	`anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
+		// );
 		console.log('ratk.anchors', ratk.anchors)
 
 	  //const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random() })
@@ -73,6 +73,11 @@
 		if (hit) {
 		  cursors[hand].visible = true
 		  cursors[hand].matrix.copy(hitMatrix)
+		  pendingAnchorData = {
+			position: cursors[hand].matrix.decompose(mesh.position).clone(),
+			quaternion: cursors[hand].matrix.decompose(mesh.quaternion).clone(),
+		  };
+		 console.log('pendingAnchorData', pendingAnchorData)
 		} else {
 		  cursors[hand].visible = false
 		}
