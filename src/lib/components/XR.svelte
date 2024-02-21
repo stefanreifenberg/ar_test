@@ -75,7 +75,6 @@
 		if (hit) {
 		  cursors[hand].visible = true
 		  cursors[hand].matrix.copy(hitMatrix)
-		  console.log('cursors[hand].matrix', cursors[hand].matrix)
 
 		  pendingAnchorsData = {
 			position: cursors[hand].matrix,
