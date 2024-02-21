@@ -33,8 +33,26 @@
 
 	  console.log('pendingAnchorsData', pendingAnchorsData)
 
-	//   const isPersistent = true
-	//   const isRecovered = false
+	  const isPersistent = true
+	  const isRecovered = false
+
+	  if (pendingAnchorsData) {
+		let position = pendingAnchorsData.position.decompose()
+		console.log('position', position)
+		let quaternion = pendingAnchorsData.quaternion.decompose()
+		console.log('quaternion', quaternion)
+
+		// ratk
+		// 	.createAnchor(
+		// 		pendingAnchorsData.position,
+		// 		pendingAnchorsData.quaternion,
+		// 		true,
+		// 	)
+		// 	.then((anchor) => {
+		// 		buildAnchorMarker(anchor, false);
+		// 	});
+		// 	pendingAnchorsData = null;
+	}
 
 	//   const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
 	// 	const material = new THREE.MeshBasicMaterial({
