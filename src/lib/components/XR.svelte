@@ -33,16 +33,20 @@
 
 	  const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random() })
 	  const mesh = new THREE.Mesh(geometry, material)
-	  console.log('cursors[hand].matrix', cursors[hand].matrix)
-	  console.log('cursors[hand].matrix.decompose(mesh.position)', cursors[hand].matrix.decompose(mesh.position))
-	  console.log('cursors[hand].matrix.decompose(mesh.quaternion)', cursors[hand].matrix.decompose(mesh.quaternion))
+	  cursors[hand].matrix.decompose(mesh.position, mesh.quaternion, mesh.scale)
+	  console.log('mesh', mesh)
+	  //mesh.scale.y = Math.random() * 2 + 1
+	  meshes.push(mesh)
+	  meshes = meshes
 	  
-	  ratk.createAnchor(cursors[hand].matrix.decompose(mesh.position), cursors[hand].matrix.decompose(mesh.quaternion), isPersistent)
-		.then((anchor /* RATK Anchor object extends Object3D */) => {
-			// Attach a new THREE.Mesh to the anchor
+	 
+	  
+	//   ratk.createAnchor(cursors[hand].matrix.decompose(mesh.position), cursors[hand].matrix.decompose(mesh.quaternion), isPersistent)
+	// 	.then((anchor /* RATK Anchor object extends Object3D */) => {
+	// 		// Attach a new THREE.Mesh to the anchor
 
-			buildAnchorMarker(anchor, false);
-		});
+	// 		buildAnchorMarker(anchor, false);
+	// 	});
 	}
   
 	const handleHitTest =
