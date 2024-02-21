@@ -31,6 +31,7 @@
 	const handleSelect = (hand) => () => {
 	  if (!cursors[hand].visible) return
 
+	  const mesh = new THREE.Mesh(geometry, material)
 	  console.log('cursors[hand].matrix', cursors[hand].matrix)
 	  console.log('cursors[hand].matrix.decompose(mesh.position)', cursors[hand].matrix.decompose(mesh.position))
 	  console.log('cursors[hand].matrix.decompose(mesh.quaternion)', cursors[hand].matrix.decompose(mesh.quaternion))
