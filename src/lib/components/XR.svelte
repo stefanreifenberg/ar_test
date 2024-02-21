@@ -37,10 +37,12 @@
 	  const isRecovered = false
 
 	  if (pendingAnchorsData) {
-		let position = pendingAnchorsData.position.decompose()
+
+		let position = pendingAnchorsData.position.decompose(new THREE.Vector3(), new THREE.Quaternion(), new THREE.Vector3())
+		let quaternion = pendingAnchorsData.quaternion.decompose(new THREE.Vector3(), new THREE.Quaternion(), new THREE.Vector3())
 		console.log('position', position)
-		let quaternion = pendingAnchorsData.quaternion.decompose()
 		console.log('quaternion', quaternion)
+
 
 		// ratk
 		// 	.createAnchor(
