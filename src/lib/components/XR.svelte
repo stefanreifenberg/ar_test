@@ -31,12 +31,18 @@
 	const handleSelect = (hand) => () => {
 	  if (!cursors[hand].visible) return
 
+	  const isPersistent = true
+	  const isRecovered = false
+
 	  const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
 		const material = new THREE.MeshBasicMaterial({
 			color: isRecovered ? 0xff0000 : 0x00ff00,
 		});
 		const cube = new THREE.Mesh(geometry, material);
 		anchor.add(cube);
+		meshes.push(cube)
+		meshes = meshes
+
 		console.log(
 			`anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
 		);
