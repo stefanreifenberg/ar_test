@@ -31,22 +31,24 @@
 	const handleSelect = (hand) => () => {
 	  if (!cursors[hand].visible) return
 
-	  const isPersistent = true
-	  const isRecovered = false
+	  console.log('pendingAnchorData', pendingAnchorData)
 
-	  const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
-		const material = new THREE.MeshBasicMaterial({
-			color: isRecovered ? 0xff0000 : 0x00ff00,
-		});
-		const cube = new THREE.Mesh(geometry, material);
-		//anchor.add(cube);
-		meshes.push(cube)
-		meshes = meshes
+	//   const isPersistent = true
+	//   const isRecovered = false
 
-		// console.log(
-		// 	`anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
-		// );
-		console.log('ratk.anchors', ratk.anchors)
+	//   const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
+	// 	const material = new THREE.MeshBasicMaterial({
+	// 		color: isRecovered ? 0xff0000 : 0x00ff00,
+	// 	});
+	// 	const cube = new THREE.Mesh(geometry, material);
+	// 	//anchor.add(cube);
+	// 	meshes.push(cube)
+	// 	meshes = meshes
+
+	// 	// console.log(
+	// 	// 	`anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
+	// 	// );
+	// 	console.log('ratk.anchors', ratk.anchors)
 
 	  //const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random() })
 	  //const mesh = new THREE.Mesh(geometry, material)
@@ -75,11 +77,10 @@
 		  cursors[hand].matrix.copy(hitMatrix)
 		  console.log('cursors[hand].matrix', cursors[hand].matrix)
 
-		//   pendingAnchorData = {
-		// 	position: cursors[hand].matrix.decompose(mesh.position).clone(),
-		// 	quaternion: cursors[hand].matrix.decompose(mesh.quaternion).clone(),
-		//   };
-		// console.log('pendingAnchorData', pendingAnchorData)
+		  pendingAnchorData = {
+			position: cursors[hand].matrix,
+			quaternion: cursors[hand].matrix,
+		  };
 		} else {
 		  cursors[hand].visible = false
 		}
