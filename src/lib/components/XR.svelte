@@ -6,6 +6,7 @@
 	import { useRatk } from '$lib/ratk.js'
 
 	const ratk = useRatk()
+	console.log('ratk', ratk)
 	let pendingAnchorsData = null
 
 	function buildAnchorMarker(anchor, isRecovered) {
