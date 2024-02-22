@@ -42,26 +42,29 @@
 		
 		const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random() })
 		const mesh = new THREE.Mesh(geometry, material)
-		cursors[hand].matrix.decompose(mesh.position, mesh.quaternion, mesh.scale)
+
+		const anchorPosition = new THREE.Vector3()
+		const anchorQuaternion = new THREE.Quaternion()
+		cursors[hand].matrix.decompose(anchorPosition, anchorQuaternion, new THREE.Vector3())
 
 		// get the mesh position and quaternion
 		// and create an anchor with it
 		// ratk.createAnchor(mesh.position, mesh.quaternion, isPersistent, isRecovered)
 
-		console.log("mesh.position", mesh.position)
-		console.log("mesh.quaternion", mesh.quaternion)
+		console.log("anchorPosition", anchorPosition)
+		console.log("anchorQuaternion", anchorQuaternion)
 
 
-		ratk
-			.createAnchor(
-				mesh.position,
-				mesh.quaternion,
-				true,
-			)
-			.then((anchor) => {
-				buildAnchorMarker(anchor, false);
-			});
-			pendingAnchorsData = null;
+		// ratk
+		// 	.createAnchor(
+		// 		mesh.position,
+		// 		mesh.quaternion,
+		// 		true,
+		// 	)
+		// 	.then((anchor) => {
+		// 		buildAnchorMarker(anchor, false);
+		// 	});
+		// 	pendingAnchorsData = null;
 	}
 
 	//   const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
