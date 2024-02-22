@@ -40,8 +40,8 @@
 	  if (pendingAnchorsData) {
 
 		
-		const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random() })
-		const mesh = new THREE.Mesh(geometry, material)
+		// const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random() })
+		// const mesh = new THREE.Mesh(geometry, material)
 
 		const anchorPosition = new THREE.Vector3()
 		const anchorQuaternion = new THREE.Quaternion()
@@ -54,15 +54,20 @@
 		console.log("anchorPosition", anchorPosition)
 		console.log("anchorQuaternion", anchorQuaternion)
 
+		const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
+		const material = new THREE.MeshBasicMaterial({
+			color: isRecovered ? 0xff0000 : 0x00ff00,
+		});
+
 
 		ratk
 			.createAnchor(
 				anchorPosition,
 				anchorQuaternion,
-				true,
+				isPersistent,
 			)
 			.then((anchor) => {
-				buildAnchorMarker(anchor, false);
+				anchor.add(new THREE.Mesh(geometry, material));
 			});
 			pendingAnchorsData = null;
 	}
