@@ -1,6 +1,6 @@
 <script>
 	import * as THREE from 'three'
-	import { T } from '@threlte/core'
+	import { T,useTask } from '@threlte/core'
 	import { OrbitControls } from '@threlte/extras'
 	import { XR, Controller, Hand, useHitTest } from '@threlte/xr'
 	import { useRatk } from '$lib/ratk.js'
@@ -9,10 +9,9 @@
 	console.log('ratk', ratk)
 	let pendingAnchorsData = null
 
-	function buildAnchorMarker(anchor, isRecovered) {
-		console.log('buildAnchorMarker', anchor)
-		
-	}
+	useTask(() => ratk.update())
+
+	
   
 	const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05)
   
