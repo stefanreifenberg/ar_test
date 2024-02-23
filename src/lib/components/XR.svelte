@@ -73,25 +73,25 @@
 		});
 
 
-		ratk
-			.createAnchor(
-				anchorPosition,
-				anchorQuaternion,
-				isPersistent
-			)
-			.then((anchor) => {
-				console.log('creating anchor')
-				const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
-				const material = new THREE.MeshBasicMaterial({
-					color: isRecovered ? 0xff0000 : 0x00ff00,
-				});
-				const cube = new THREE.Mesh(geometry, material);
-				anchor.add(cube);
-				console.log(
-					`anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}`,
-				);
-			});
-			pendingAnchorsData = null;
+		// ratk
+		// 	.createAnchor(
+		// 		anchorPosition,
+		// 		anchorQuaternion,
+		// 		isPersistent
+		// 	)
+		// 	.then((anchor) => {
+		// 		console.log('creating anchor')
+		// 		const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
+		// 		const material = new THREE.MeshBasicMaterial({
+		// 			color: isRecovered ? 0xff0000 : 0x00ff00,
+		// 		});
+		// 		const cube = new THREE.Mesh(geometry, material);
+		// 		anchor.add(cube);
+		// 		console.log(
+		// 			`anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}`,
+		// 		);
+		// 	});
+		// 	pendingAnchorsData = null;
 	}
 
 	//   const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
