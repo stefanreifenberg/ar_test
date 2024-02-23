@@ -11,15 +11,7 @@
 
 	function buildAnchorMarker(anchor, isRecovered) {
 		console.log('buildAnchorMarker', anchor)
-		// const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
-		// const material = new THREE.MeshBasicMaterial({
-		// 	color: isRecovered ? 0xff0000 : 0x00ff00,
-		// });
-		// const cube = new THREE.Mesh(geometry, material);
-		// anchor.add(cube);
-		// console.log(
-		// 	`anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
-		// );
+		
 	}
   
 	const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05)
@@ -35,10 +27,12 @@
 
 	  console.log('pendingAnchorsData', pendingAnchorsData)
 
-	  const isPersistent = true
-	  const isRecovered = false
+	  
 
 	  if (pendingAnchorsData) {
+
+		const isPersistent = true
+	  	const isRecovered = false
 
 		
 		// const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random() })
@@ -55,20 +49,28 @@
 		console.log("anchorPosition", anchorPosition)
 		console.log("anchorQuaternion", anchorQuaternion)
 
-		const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
-		const material = new THREE.MeshBasicMaterial({
-			color: isRecovered ? 0xff0000 : 0x00ff00,
-		});
+		// const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
+		// const material = new THREE.MeshBasicMaterial({
+		// 	color: isRecovered ? 0xff0000 : 0x00ff00,
+		// });
 
 
 		ratk
 			.createAnchor(
 				anchorPosition,
 				anchorQuaternion,
-				isPersistent,
+				isPersistent
 			)
 			.then((anchor) => {
-				anchor.add(new THREE.Mesh(geometry, material));
+				const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
+				const material = new THREE.MeshBasicMaterial({
+					color: isRecovered ? 0xff0000 : 0x00ff00,
+				});
+				const cube = new THREE.Mesh(geometry, material);
+				anchor.add(cube);
+				console.log(
+					`anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
+				);
 			});
 			pendingAnchorsData = null;
 	}
