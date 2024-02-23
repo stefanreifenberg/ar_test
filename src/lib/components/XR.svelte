@@ -4,14 +4,10 @@
 	import { OrbitControls } from '@threlte/extras'
 	import { XR, Controller, Hand, useHitTest } from '@threlte/xr'
 	import { useRatk } from '$lib/ratk.js'
+	import { pendingAnchorStoreData } from '$lib/store.js'
 
 	const ratk = useRatk()
-	console.log('ratk', ratk)
 	let pendingAnchorsData = null
-
-	useTask(() => ratk.update())
-
-	
   
 	const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05)
   
@@ -33,90 +29,13 @@
 		const isPersistent = true
 	  	const isRecovered = false
 
-		
-		// const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random() })
-		// const mesh = new THREE.Mesh(geometry, material)
-
-		//const anchorPosition = new THREE.Vector3()
-		//const anchorQuaternion = new THREE.Quaternion()
-		//cursors[hand].matrix.decompose(anchorPosition, anchorQuaternion, new THREE.Vector3())
-
-		// get the mesh position and quaternion
-		// and create an anchor with it
-		// ratk.createAnchor(mesh.position, mesh.quaternion, isPersistent, isRecovered)
-
-		//console.log("anchorPosition", anchorPosition)
-		//console.log("anchorQuaternion", anchorQuaternion)
-
-		// const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
-		// const material = new THREE.MeshBasicMaterial({
-		// 	color: isRecovered ? 0xff0000 : 0x00ff00,
-		// });
-
 		const anchorPosition = new THREE.Vector3(1, 2, 3);
 		const anchorQuaternion = new THREE.Quaternion(0, 0, 0, 1);
 
-		ratk.createAnchor(anchorPosition, anchorQuaternion, isPersistent)
-		.then((anchor /* RATK Anchor object extends Object3D */) => {
-			// Attach a new THREE.Mesh to the anchor
-			const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
-				const material = new THREE.MeshBasicMaterial({
-					color:  0xff0000
-				});
-				const cube = new THREE.Mesh(geometry, material);
-				console.log('cube', cube)
-				anchor.add(cube);
-				// console.log(
-				// 	`anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}`,
-				// );
-		});
+		// set pendingAnchorsData to pendingAnchorStoreData 
+		pendingAnchorStoreData.set(pendingAnchorsData)
 
-
-		// ratk
-		// 	.createAnchor(
-		// 		anchorPosition,
-		// 		anchorQuaternion,
-		// 		isPersistent
-		// 	)
-		// 	.then((anchor) => {
-		// 		console.log('creating anchor')
-		// 		const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
-		// 		const material = new THREE.MeshBasicMaterial({
-		// 			color: isRecovered ? 0xff0000 : 0x00ff00,
-		// 		});
-		// 		const cube = new THREE.Mesh(geometry, material);
-		// 		anchor.add(cube);
-		// 		console.log(
-		// 			`anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}`,
-		// 		);
-		// 	});
-		// 	pendingAnchorsData = null;
-	}
-
-	//   const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
-	// 	const material = new THREE.MeshBasicMaterial({
-	// 		color: isRecovered ? 0xff0000 : 0x00ff00,
-	// 	});
-	// 	const cube = new THREE.Mesh(geometry, material);
-	// 	//anchor.add(cube);
-	// 	meshes.push(cube)
-	// 	meshes = meshes
-
-	// 	// console.log(
-	// 	// 	`anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
-	// 	// );
-	// 	console.log('ratk.anchors', ratk.anchors)
-
-	  //const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random() })
-	  //const mesh = new THREE.Mesh(geometry, material)
-	  //cursors[hand].matrix.decompose(mesh.position, mesh.quaternion, mesh.scale)
-	  //console.log('mesh', mesh)
-	  //mesh.scale.y = Math.random() * 2 + 1
-	 // meshes.push(mesh)
-	 // meshes = meshes
-	  
-	 
-	  
+		} 
 	
 	}
   
