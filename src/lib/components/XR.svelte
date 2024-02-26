@@ -23,17 +23,9 @@
 	  console.log('pendingAnchorsData', pendingAnchorsData)
 
 	  if (pendingAnchorsData) {
-
-		const isPersistent = true
-	  	const isRecovered = false
-
-		const anchorPosition = new THREE.Vector3(1, 2, 3);
-		const anchorQuaternion = new THREE.Quaternion(0, 0, 0, 1);
-
 		// set pendingAnchorsData to pendingAnchorStoreData 
 		pendingAnchorStoreData.set(pendingAnchorsData)
-
-		} 
+	  } 
 	
 	}
   
