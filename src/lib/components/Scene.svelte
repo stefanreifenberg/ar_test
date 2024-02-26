@@ -4,11 +4,13 @@
   import { createRatk } from '../ratk'
   import Planes from './Planes.svelte';
   import Meshes from './Meshes.svelte';
+  import Anchors from './Anchors.svelte';
 
   createRatk()
 
 </script>
 
+<Anchors />
 <Meshes />
 <Planes />
 

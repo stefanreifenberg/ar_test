@@ -45,10 +45,7 @@
 		  cursors[hand].visible = true
 		  cursors[hand].matrix.copy(hitMatrix)
 
-		  pendingAnchorsData = {
-			position: cursors[hand].matrix,
-			quaternion: cursors[hand].matrix,
-		  };
+		  pendingAnchorsData = cursors[hand].matrix
 		} else {
 		  cursors[hand].visible = false
 		}
