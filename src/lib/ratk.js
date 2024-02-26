@@ -5,6 +5,8 @@ import { useThrelte, useTask } from '@threlte/core'
 import { pendingAnchorStoreData } from '$lib/store.js'
 import { get } from 'svelte/store'
 
+const key = Symbol('ratk')
+
 export const createRatk = () => {
 	const { renderer } = useThrelte()
 	const ratk = new RealityAccelerator(renderer.xr)
