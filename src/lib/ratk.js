@@ -13,7 +13,7 @@ export function getCountValue() {
     return value;
 }
 
-$: storeValue = getCountValue()
+let storeValue = getCountValue()
 
 const key = Symbol('ratk')
 
@@ -31,7 +31,7 @@ function buildAnchorMarker(anchor, isRecovered) {
 
 function handlePendingAnchors() {
 	console.log('handlePendingAnchors')
-	console.log("getCountValue()",storeValue)
+	console.log("storeValue",storeValue)
 	if (storeValue !== null) {
 
 		console.log("handlePendingAnchors")
