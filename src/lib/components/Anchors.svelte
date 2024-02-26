@@ -20,7 +20,12 @@
         const geometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
         const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
 
+
+
         // create an anchor
+        console.log('creating anchor')
+        console.log("ratk",ratk)
+        console.log("ratk.anchors",ratk.anchors)
 
         ratk.createAnchor(anchorPosition, anchorQuaternion, isPersistent)
             .then((anchor /* RATK Anchor object extends Object3D */) => {
