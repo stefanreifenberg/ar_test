@@ -57,6 +57,7 @@ export const createRatk = () => {
 			});
 		}, 1000);
 	});
+	console.log('createRatk')
 	useTask(() => ratk.update(), handlePendingAnchors())
 	setContext(key, ratk)
 }

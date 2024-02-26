@@ -22,8 +22,6 @@
 
 	  console.log('pendingAnchorsData', pendingAnchorsData)
 
-	  
-
 	  if (pendingAnchorsData) {
 
 		const isPersistent = true
