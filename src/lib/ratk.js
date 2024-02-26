@@ -7,6 +7,18 @@ import { get } from 'svelte/store'
 
 const key = Symbol('ratk')
 
+function buildAnchorMarker(anchor, isRecovered) {
+	const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
+	const material = new THREE.MeshBasicMaterial({
+		color: isRecovered ? 0xff0000 : 0x00ff00,
+	});
+	const cube = new Mesh(geometry, material);
+	anchor.add(cube);
+	console.log(
+		`anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
+	);
+}
+
 export const createRatk = () => {
 	const { renderer } = useThrelte()
 	const ratk = new RealityAccelerator(renderer.xr)
