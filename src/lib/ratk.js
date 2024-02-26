@@ -12,7 +12,7 @@ function buildAnchorMarker(anchor, isRecovered) {
 	const material = new THREE.MeshBasicMaterial({
 		color: isRecovered ? 0xff0000 : 0x00ff00,
 	});
-	const cube = new Mesh(geometry, material);
+	const cube = new THREE.Mesh(geometry, material);
 	anchor.add(cube);
 	console.log(
 		`anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
