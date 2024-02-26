@@ -1,7 +1,7 @@
 <script>
     import { pendingAnchorStoreData } from '$lib/store.js'
     import * as THREE from 'three'
-	import { T,useThrelte } from '@threlte/core'
+	import { T,useTask } from '@threlte/core'
 	import { useRatk } from '$lib/ratk.js'
 
 	const ratk = useRatk()
@@ -9,8 +9,8 @@
     $: pendingAnchorsData = $pendingAnchorStoreData
     $: console.log('pendingAnchorsData anchors.svelte', pendingAnchorsData)
 
-    // check if the pendingAnchorsData is not null
-    $: if (pendingAnchorsData) {
+    useTask((delta) => {
+    if (pendingAnchorsData) {
         const isPersistent = true
         const isRecovered = false
 
@@ -19,8 +19,6 @@
 
         const geometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
         const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-
-
 
         // create an anchor
         console.log('creating anchor')
@@ -36,6 +34,11 @@
                 anchor.add(new THREE.Mesh(geometry, material));
             });
     }
+    pendingAnchorsData = null
+  })
+
+    // check if the pendingAnchorsData is not null
+   
 
 </script>
 
