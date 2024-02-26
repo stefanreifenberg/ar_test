@@ -3,6 +3,7 @@ import * as THREE from 'three'
 import { RealityAccelerator } from 'ratk'
 import { useThrelte, useTask } from '@threlte/core'
 import { pendingAnchorStoreData } from '$lib/store.js'
+import { get } from 'svelte/store'
 
 export function getCountValue() {
     let value;
@@ -27,6 +28,8 @@ function buildAnchorMarker(anchor, isRecovered) {
 }
 
 function handlePendingAnchors() {
+	console.log('handlePendingAnchors')
+	console.log("getCountValue()",getCountValue())
 	if (getCountValue() !== null) {
 
 		console.log("handlePendingAnchors")
