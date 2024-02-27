@@ -4,6 +4,11 @@
 	import { T,useTask } from '@threlte/core'
 	import { useRatk } from '$lib/ratk.js'
     import { onMount } from 'svelte'
+    import { useXR } from '@threlte/xr'
+
+    const { isPresenting} = useXR()
+
+    $: console.log("isPresenting", $isPresenting)
 
 	const ratk = useRatk()
     let anchors = []
@@ -23,14 +28,14 @@
             `anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
         );
     }
-    onMount(() => {
-        if(ratk) {
-            start()
-            setTimeout(() => {
-                stop()
-            }, 500)
-        }
-    })
+   
+    if($isPresenting) {
+        start()
+        setTimeout(() => {
+            stop()
+        }, 500)
+    }
+
     const { start, stop, started } = useTask((delta) => {
     // do something
      
