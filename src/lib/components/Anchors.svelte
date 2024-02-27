@@ -32,14 +32,25 @@
 	// 		});
 	// }, 1000);
 
-    useTask((delta) => {
-
-        ratk.restorePersistentAnchors().then(() => {
+    const { start, stop, started } = useTask((delta) => {
+    // do something
+    ratk.restorePersistentAnchors().then(() => {
 				// if there are more than seven anchors, remove all of them
 				ratk.anchors.forEach((anchor) => {
 					buildAnchorMarker(anchor, true);
 				});
 			});
+    }, { autoStart: false })
+    // start the task with a delay of 1 second
+   setTimeout(() => {
+        start()
+        stop()
+    }, 1000)
+    // check if the task is started
+    $: console.log($started)
+
+    useTask((delta) => {
+        
 
         if (pendingAnchorsData) {
             const isPersistent = true
