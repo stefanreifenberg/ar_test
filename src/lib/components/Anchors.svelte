@@ -43,9 +43,10 @@
     }, { autoStart: false })
     // start the task with a delay of 1 second
    setTimeout(() => {
+      console.kog("starting task")
         start()
         stop()
-    }, 1000)
+    }, 2000)
     // check if the task is started
     $: console.log($started)
 
