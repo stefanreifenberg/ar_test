@@ -3,6 +3,7 @@
     import * as THREE from 'three'
 	import { T,useTask } from '@threlte/core'
 	import { useRatk } from '$lib/ratk.js'
+    import { onMount } from 'svelte'
 
 	const ratk = useRatk()
     let anchors = []
@@ -22,33 +23,20 @@
             `anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
         );
     }
-
-    // setTimeout(() => {
-	// 		ratk.restorePersistentAnchors().then(() => {
-	// 			// if there are more than seven anchors, remove all of them
-	// 			ratk.anchors.forEach((anchor) => {
-	// 				buildAnchorMarker(anchor, true);
-	// 			});
-	// 		});
-	// }, 1000);
-
-    const { start, stop, started } = useTask((delta) => {
-    // do something
-    ratk.restorePersistentAnchors().then(() => {
-				// if there are more than seven anchors, remove all of them
-				ratk.anchors.forEach((anchor) => {
-					buildAnchorMarker(anchor, true);
-				});
-			});
-    }, { autoStart: false })
-    // start the task with a delay of 1 second
-   setTimeout(() => {
-      console.kog("starting task")
+    onMount(() => {
+        console.kog("starting task")
         start()
         stop()
-    }, 2000)
-    // check if the task is started
-    $: console.log($started)
+    })
+    const { start, stop, started } = useTask((delta) => {
+    // do something
+        ratk.restorePersistentAnchors().then(() => {
+                    // if there are more than seven anchors, remove all of them
+                    ratk.anchors.forEach((anchor) => {
+                        buildAnchorMarker(anchor, true);
+                    });
+                });
+    }, { autoStart: false })
 
     useTask((delta) => {
         
