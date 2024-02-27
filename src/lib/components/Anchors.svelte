@@ -11,6 +11,27 @@
 
     $: pendingAnchorsData = $pendingAnchorStoreData
 
+    function buildAnchorMarker(anchor, isRecovered) {
+        const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
+        const material = new THREE.MeshBasicMaterial({
+            color: isRecovered ? 0xff0000 : 0x00ff00,
+        });
+        const cube = new THREE.Mesh(geometry, material);
+        anchor.add(cube);
+        console.log(
+            `anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
+        );
+    }
+
+    setTimeout(() => {
+			ratk.restorePersistentAnchors().then(() => {
+				// if there are more than seven anchors, remove all of them
+				ratk.anchors.forEach((anchor) => {
+					buildAnchorMarker(anchor, true);
+				});
+			});
+	}, 1000);
+
     useTask((delta) => {
 
         if (pendingAnchorsData) {
@@ -46,7 +67,6 @@
         }
         pendingAnchorsData = null
   })
-    // check if the pendingAnchorsData is not null
    
 
 </script>
