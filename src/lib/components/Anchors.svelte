@@ -23,16 +23,23 @@
         );
     }
 
-    setTimeout(() => {
-			ratk.restorePersistentAnchors().then(() => {
+    // setTimeout(() => {
+	// 		ratk.restorePersistentAnchors().then(() => {
+	// 			// if there are more than seven anchors, remove all of them
+	// 			ratk.anchors.forEach((anchor) => {
+	// 				buildAnchorMarker(anchor, true);
+	// 			});
+	// 		});
+	// }, 1000);
+
+    useTask((delta) => {
+
+        ratk.restorePersistentAnchors().then(() => {
 				// if there are more than seven anchors, remove all of them
 				ratk.anchors.forEach((anchor) => {
 					buildAnchorMarker(anchor, true);
 				});
 			});
-	}, 1000);
-
-    useTask((delta) => {
 
         if (pendingAnchorsData) {
             const isPersistent = true
