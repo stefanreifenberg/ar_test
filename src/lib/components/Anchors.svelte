@@ -7,8 +7,9 @@
 	const ratk = useRatk()
     let anchors = []
 
+    $: console.log("anchors", anchors)
+
     $: pendingAnchorsData = $pendingAnchorStoreData
-    $: console.log('pendingAnchorsData anchors.svelte', pendingAnchorsData)
 
     useTask((delta) => {
 
