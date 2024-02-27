@@ -24,9 +24,13 @@
         );
     }
     onMount(() => {
-        console.log("starting task")
-        start()
-        stop()
+        
+        if (ratk) {
+            console.log("starting task")
+            start()
+            stop()
+        }
+        
     })
     const { start, stop, started, task: someTask } = useTask('some-task',(delta) => {
     // do something
