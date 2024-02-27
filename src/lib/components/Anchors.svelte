@@ -26,9 +26,13 @@
     onMount(() => {
         
         if (ratk) {
-            console.log("starting task")
-            //start()
-            stop()
+            ratk.restorePersistentAnchors().then(() => {
+                    // if there are more than seven anchors, remove all of them
+                    ratk.anchors.forEach((anchor) => {
+                        console.log("anchor", anchor)
+                        buildAnchorMarker(anchor, true);
+                    });
+                });
         }
         
     })
@@ -46,13 +50,7 @@
 
     useTask((delta) => {
 
-        ratk.restorePersistentAnchors().then(() => {
-                    // if there are more than seven anchors, remove all of them
-                    ratk.anchors.forEach((anchor) => {
-                        console.log("anchor", anchor)
-                        buildAnchorMarker(anchor, true);
-                    });
-                });
+       
 
         // if (pendingAnchorsData) {
         //     const isPersistent = true
