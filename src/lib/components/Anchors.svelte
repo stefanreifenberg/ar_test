@@ -27,12 +27,12 @@
         
         if (ratk) {
             console.log("starting task")
-            start()
+            updateAnchors()
             stop()
         }
         
     })
-    const { start, stop, started, task: someTask } = useTask('some-task',(delta) => {
+    const { start: updateAnchors, stop, started, task: someTask } = useTask('some-task',(delta) => {
     // do something
      
        console.log("initilizing persistent anchors")
