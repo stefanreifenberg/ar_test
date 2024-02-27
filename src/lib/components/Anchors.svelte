@@ -30,7 +30,7 @@
                     // if there are more than seven anchors, remove all of them
                     ratk.anchors.forEach((anchor) => {
                         console.log("anchor", anchor)
-                        buildAnchorMarker(anchor, true);
+                        //buildAnchorMarker(anchor, true);
                     });
                 });
         }
