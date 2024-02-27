@@ -29,7 +29,7 @@
         );
     }
    
-    if($isPresenting) {
+    $: if($isPresenting) {
         console.log("start task")
         start()
         setTimeout(() => {
