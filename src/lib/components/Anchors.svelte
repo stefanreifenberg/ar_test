@@ -6,7 +6,7 @@
     import { onMount } from 'svelte'
     import { useXR } from '@threlte/xr'
 
-    const { isPresenting} = useXR()
+    const { isPresenting } = useXR()
 
     $: console.log("isPresenting", $isPresenting)
 
@@ -30,13 +30,14 @@
     }
    
     if($isPresenting) {
+        console.log("start task")
         start()
         setTimeout(() => {
             stop()
-        }, 500)
+        }, 1000)
     }
 
-    const { start, stop, started } = useTask((delta) => {
+    const { start, stop } = useTask((delta) => {
     // do something
      
        console.log("initilizing persistent anchors")
