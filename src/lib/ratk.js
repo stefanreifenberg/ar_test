@@ -26,11 +26,22 @@ export const createRatk = () => {
 		console.log('sessionstart')
 		setTimeout(() => {
 			ratk.restorePersistentAnchors().then(() => {
+				// if there are more than seven anchors, remove all of them
+				if (ratk.anchors.length > 7) {
+					ratk.anchors.forEach((anchor) => {
+						ratk.removeAnchor(anchor);
+					});
+				}
 				ratk.anchors.forEach((anchor) => {
 					buildAnchorMarker(anchor, true);
 				});
 			});
 		}, 1000);
+		setTimeout(() => {
+			if (ratk.planes.size == 0) {
+				renderer.xr.getSession().initiateRoomCapture();
+			}
+		}, 5000);
 	});
 	console.log('createRatk')
 	useTask(() => ratk.update())
