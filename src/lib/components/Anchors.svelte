@@ -24,29 +24,24 @@
         );
     }
     onMount(() => {
-        
-        if (ratk) {
-            ratk.restorePersistentAnchors().then(() => {
+        if(ratk) {
+            start()
+            setTimeout(() => {
+                stop()
+            }, 500)
+        }
+    })
+    const { start, stop, started } = useTask((delta) => {
+    // do something
+     
+       console.log("initilizing persistent anchors")
+        ratk.restorePersistentAnchors().then(() => {
                     // if there are more than seven anchors, remove all of them
                     ratk.anchors.forEach((anchor) => {
-                        console.log("anchor", anchor)
                         buildAnchorMarker(anchor, true);
                     });
                 });
-        }
-        
-    })
-    // const { start, stop, started } = useTask((delta) => {
-    // // do something
-     
-    //    console.log("initilizing persistent anchors")
-    //     ratk.restorePersistentAnchors().then(() => {
-    //                 // if there are more than seven anchors, remove all of them
-    //                 ratk.anchors.forEach((anchor) => {
-    //                     buildAnchorMarker(anchor, true);
-    //                 });
-    //             });
-    // }, { autoStart: true })
+    }, { autoStart: false })
 
     useTask((delta) => {
 
