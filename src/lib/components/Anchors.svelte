@@ -30,6 +30,7 @@
     })
     const { start, stop, started, task: someTask } = useTask('some-task',(delta) => {
     // do something
+       console.log("initilizing persistent anchors")
         ratk.restorePersistentAnchors().then(() => {
                     // if there are more than seven anchors, remove all of them
                     ratk.anchors.forEach((anchor) => {
