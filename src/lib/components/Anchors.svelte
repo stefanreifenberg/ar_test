@@ -24,11 +24,11 @@
         );
     }
     onMount(() => {
-        console.kog("starting task")
+        console.log("starting task")
         start()
         stop()
     })
-    const { start, stop, started } = useTask((delta) => {
+    const { start, stop, started, task: someTask } = useTask('some-task',(delta) => {
     // do something
         ratk.restorePersistentAnchors().then(() => {
                     // if there are more than seven anchors, remove all of them
