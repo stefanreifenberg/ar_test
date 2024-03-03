@@ -9,12 +9,14 @@
     const { isPresenting } = useXR()
 
     const vec3 = new THREE.Vector3()
+    const group = new THREE.Group()
 
     $: console.log("isPresenting", $isPresenting)
 
 	const ratk = useRatk()
     let anchors = []
     let testAnchors = []
+    let objects = []
 
     $: console.log("anchors", anchors)
     $: console.log("testAnchors", testAnchors)
@@ -22,6 +24,9 @@
     $: pendingAnchorsData = $pendingAnchorStoreData
 
     function buildAnchorMarker(anchor, isRecovered) {
+
+        anchors = [...ratk.anchors]
+
         const geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
         const material = new THREE.MeshBasicMaterial({
             //color: isRecovered ? 0xff0000 : 0x00ff00,
@@ -29,11 +34,23 @@
         });
         const cube = new THREE.Mesh(geometry, material);
         anchor.add(cube);
-        //anchors = [...ratk.anchors]
-        anchors.push(anchor)
-        testAnchors.push(cube)
-        anchors = anchors
-        testAnchors = testAnchors
+
+        objects.splice(0, objects.length)
+
+        for (const anchor of ratk.anchors) {
+            
+            objects.push(anchor.mesh)
+        }
+
+        objects = objects
+
+		const [object] = objects
+
+        group.position.set(object.position.x, object.position.y, object.position.z)
+		group.lookAt(0, 0, 0)
+        
+
+
         //console.log("anchors", anchors)
         // console.log(
         //     `anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
@@ -109,6 +126,11 @@
     
 	<T is={anchor} visible={true} />
 {/each} -->
+
+{#each objects as object}
+	<T is={object} visible={true}/>
+{/each}
+
 
 {#each anchors as anchor, index (index)}
   <T is={anchor} />
