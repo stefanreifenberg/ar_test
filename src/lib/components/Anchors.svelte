@@ -8,6 +8,8 @@
 
     const { isPresenting } = useXR()
 
+    const vec3 = new THREE.Vector3()
+
     $: console.log("isPresenting", $isPresenting)
 
 	const ratk = useRatk()
@@ -18,23 +20,24 @@
     $: pendingAnchorsData = $pendingAnchorStoreData
 
     function buildAnchorMarker(anchor, isRecovered) {
-        const geometry = new THREE.BoxGeometry(0.05, 0.05, 0.05);
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
         const material = new THREE.MeshBasicMaterial({
-            color: isRecovered ? 0xff0000 : 0x00ff00,
+            //color: isRecovered ? 0xff0000 : 0x00ff00,
+            color: 0x00ff00,
         });
         const cube = new THREE.Mesh(geometry, material);
         anchor.add(cube);
-        console.log(
-            `anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
-        );
+        anchors = [...ratk.anchors]
+        //console.log("anchors", anchors)
+        // console.log(
+        //     `anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
+        // );
     }
    
     $: if($isPresenting) {
         console.log("start task")
         start()
-        setTimeout(() => {
-            stop()
-        }, 1000)
+        stop()
     }
 
     const { start, stop } = useTask((delta) => {
@@ -43,6 +46,7 @@
        console.log("initilizing persistent anchors")
         ratk.restorePersistentAnchors().then(() => {
                     // if there are more than seven anchors, remove all of them
+                    console.log("ratk.anchors",ratk.anchors)
                     ratk.anchors.forEach((anchor) => {
                         buildAnchorMarker(anchor, true);
                     });
@@ -91,6 +95,7 @@
 </script>
 
 {#each anchors as anchor}
+    {@const size = anchor.planeMesh?.geometry.boundingBox?.getSize(vec3) ?? { x: 0, z: 0 }}
 	<T is={anchor} visible={true} />
 {/each}
 
