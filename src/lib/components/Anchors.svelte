@@ -20,7 +20,7 @@
     $: pendingAnchorsData = $pendingAnchorStoreData
 
     function buildAnchorMarker(anchor, isRecovered) {
-        const geometry = new THREE.BoxGeometry(1, 1, 1);
+        const geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
         const material = new THREE.MeshBasicMaterial({
             //color: isRecovered ? 0xff0000 : 0x00ff00,
             color: 0x00ff00,
@@ -28,7 +28,7 @@
         const cube = new THREE.Mesh(geometry, material);
         anchor.add(cube);
         //anchors = [...ratk.anchors]
-        anchors.push(cube)
+        anchors.push(anchor)
         anchors = anchors
         //console.log("anchors", anchors)
         // console.log(
