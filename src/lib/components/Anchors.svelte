@@ -33,6 +33,7 @@
         anchors.push(anchor)
         testAnchors.push(cube)
         anchors = anchors
+        testAnchors = testAnchors
         //console.log("anchors", anchors)
         // console.log(
         //     `anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
