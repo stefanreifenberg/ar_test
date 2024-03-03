@@ -33,10 +33,12 @@
         //     `anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
         // );
     }
+
+    let anchorsLoaded = false
    
-    $: if($isPresenting) {
-        console.log("start task")
-        start()
+    $: if(anchorsLoaded) {
+        console.log("all anchors loaded")
+        //start()
         stop()
     }
 
@@ -50,8 +52,9 @@
                     ratk.anchors.forEach((anchor) => {
                         buildAnchorMarker(anchor, true);
                     });
+                    anchorsLoaded = true
                 });
-    }, { autoStart: false })
+    }, { autoStart: true })
 
     useTask((delta) => {
 
