@@ -14,8 +14,10 @@
 
 	const ratk = useRatk()
     let anchors = []
+    let testAnchors = []
 
     $: console.log("anchors", anchors)
+    $: console.log("testAnchors", testAnchors)
 
     $: pendingAnchorsData = $pendingAnchorStoreData
 
@@ -29,6 +31,7 @@
         anchor.add(cube);
         //anchors = [...ratk.anchors]
         anchors.push(anchor)
+        testAnchors.push(cube)
         anchors = anchors
         //console.log("anchors", anchors)
         // console.log(
