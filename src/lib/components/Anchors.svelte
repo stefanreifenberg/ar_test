@@ -38,16 +38,16 @@
         objects.splice(0, objects.length)
 
         for (const anchor of ratk.anchors) {
-            
-            objects.push(anchor.mesh)
+            console.log("anchor", anchor)
+            //objects.push(anchor.mesh)
         }
 
-        objects = objects
+        // objects = objects
 
-		const [object] = objects
+		// const [object] = objects
 
-        group.position.set(object.position.x, object.position.y, object.position.z)
-		group.lookAt(0, 0, 0)
+        // group.position.set(object.position.x, object.position.y, object.position.z)
+		// group.lookAt(0, 0, 0)
         
 
 
