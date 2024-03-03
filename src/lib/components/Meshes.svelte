@@ -55,6 +55,7 @@
 			objects.splice(0, objects.length)
 
 			for (const mesh of ratk.meshes) {
+        console.log("mesh", mesh)
 				if (mesh.meshMesh === undefined) {
 					continue
 				}
@@ -63,6 +64,7 @@
 			}
 
 			objects = objects
+      console.log("meshes objects", objects)
 
 			const [object] = objects
 

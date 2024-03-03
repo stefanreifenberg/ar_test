@@ -38,8 +38,8 @@
         objects.splice(0, objects.length)
 
         for (const anchor of ratk.anchors) {
-            console.log("anchor", anchor)
-            //objects.push(anchor.mesh)
+            //console.log("anchor", anchor)
+            //objects.push(anchor.children)
         }
 
         // objects = objects
