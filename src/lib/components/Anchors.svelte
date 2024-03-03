@@ -27,7 +27,9 @@
         });
         const cube = new THREE.Mesh(geometry, material);
         anchor.add(cube);
-        anchors = [...ratk.anchors]
+        //anchors = [...ratk.anchors]
+        anchors.push(cube)
+        anchors = anchors
         //console.log("anchors", anchors)
         // console.log(
         //     `anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
@@ -44,8 +46,8 @@
 
     const { start, stop } = useTask((delta) => {
     // do something
-     
-       console.log("initilizing persistent anchors")
+      if($isPresenting && !anchorsLoaded) {
+        console.log("initilizing persistent anchors")
         ratk.restorePersistentAnchors().then(() => {
                     // if there are more than seven anchors, remove all of them
                     console.log("ratk.anchors",ratk.anchors)
@@ -54,6 +56,8 @@
                     });
                     anchorsLoaded = true
                 });
+      }
+       
     }, { autoStart: true })
 
     useTask((delta) => {
@@ -97,8 +101,12 @@
 
 </script>
 
-{#each anchors as anchor}
-    {@const size = anchor.planeMesh?.geometry.boundingBox?.getSize(vec3) ?? { x: 0, z: 0 }}
+<!-- {#each anchors as anchor}
+    
 	<T is={anchor} visible={true} />
+{/each} -->
+
+{#each anchors as anchor, index (index)}
+  <T is={anchor} />
 {/each}
 
