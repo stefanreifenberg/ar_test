@@ -85,6 +85,12 @@
             console.log("ratk",ratk)
             console.log("ratk.anchors",ratk.anchors)
 
+            // if there are more than 7 anchors delete the first one
+            if(ratk.anchors.length > 7) {
+                console.log("deleting anchor")
+                ratk.deleteAnchor(ratk.anchors[0])
+            }
+
             ratk.createAnchor(anchorPosition, anchorQuaternion, true)
                 .then((anchor /* RATK Anchor object extends Object3D */) => {
                     buildAnchorMarker(anchor, false);
