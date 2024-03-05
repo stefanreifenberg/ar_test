@@ -82,8 +82,8 @@
 
             // create an anchor
             console.log('creating anchor')
-            console.log("ratk",ratk)
-            console.log("ratk.anchors",ratk.anchors)
+          
+            console.log("ratk.anchors length",ratk.anchors.length)
 
             // if there are more than 7 anchors delete the first one
             if(ratk.anchors.length > 7) {
