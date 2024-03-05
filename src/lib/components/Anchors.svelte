@@ -38,21 +38,18 @@
         }
 
         objects = objects
-       //console.log("anchor objects", objects)
-
-		const [object] = objects
+       
+        const [object] = objects
 
         if (!object) {
-			enabled = false
-			return
-		}
+            enabled = false
+            return
+        }
+        
         console.log("object", object)
 
         group.position.set(object.position.x, object.position.y, object.position.z)
 		group.lookAt(0, 0, 0)
-
-        console.log("group", group)
-
         enabled = true
     }
 
@@ -69,27 +66,6 @@
                 });
         anchorsLoaded = true
     }
-   
-    // $: if(anchorsLoaded) {
-    //     console.log("all anchors loaded")
-    //     //start()
-    //     stop()
-    // }
-
-    // const { start, stop } = useTask((delta) => {
-    // // do something
-    //   if($isPresenting && !anchorsLoaded) {
-    //     console.log("initilizing persistent anchors")
-    //     ratk.restorePersistentAnchors().then(() => {
-    //                 console.log("ratk.anchors",ratk.anchors)
-    //                 ratk.anchors.forEach((anchor) => {
-    //                     buildAnchorMarker(anchor, true);
-    //                 });
-                    
-    //             });
-    //     anchorsLoaded = true
-    //   }
-    // }, { autoStart: false })
 
     useTask((delta) => {
         ratk.update()
@@ -112,5 +88,5 @@
     {#each anchors as anchor, index (index)}
     <T is={anchor} visible={true}/>
     {/each}
-{/if}
- -->
+{/if} -->
+

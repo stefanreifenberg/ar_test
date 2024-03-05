@@ -48,8 +48,6 @@
 					wireframe: true,
 					color: Math.random() * 0xffffff,
 				});
-
-				//mesh.geometry.computeBoundingBox();
 			}
 
 			objects.splice(0, objects.length)
