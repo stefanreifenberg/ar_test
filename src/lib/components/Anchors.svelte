@@ -67,6 +67,30 @@
     }
 
     useTask((delta) => {
+        if (pendingAnchorsData) {
+            const isPersistent = true
+            let anchorPosition
+            let anchorQuaternion
+            
+            const matrix = pendingAnchorsData
+            const position = new THREE.Vector3()
+            const quaternion = new THREE.Quaternion()
+            const scale = new THREE.Vector3()
+            matrix.decompose(position, quaternion, scale)
+            anchorPosition = position
+            anchorQuaternion = quaternion
+
+            // create an anchor
+            console.log('creating anchor')
+            console.log("ratk",ratk)
+            console.log("ratk.anchors",ratk.anchors)
+
+            ratk.createAnchor(anchorPosition, anchorQuaternion, false)
+                .then((anchor /* RATK Anchor object extends Object3D */) => {
+                    buildAnchorMarker(anchor, false);
+                });
+        }
+        pendingAnchorsData = null
         ratk.update()
   })
    
