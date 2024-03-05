@@ -52,13 +52,6 @@
 		group.lookAt(0, 0, 0)
 
         enabled = true
-        
-
-
-        //console.log("anchors", anchors)
-        // console.log(
-        //     `anchor created (id: ${anchor.anchorID}, isPersistent: ${anchor.isPersistent}, isRecovered: ${isRecovered})`,
-        // );
     }
 
     let anchorsLoaded = false
@@ -74,7 +67,6 @@
       if($isPresenting && !anchorsLoaded) {
         console.log("initilizing persistent anchors")
         ratk.restorePersistentAnchors().then(() => {
-                    // if there are more than seven anchors, remove all of them
                     console.log("ratk.anchors",ratk.anchors)
                     ratk.anchors.forEach((anchor) => {
                         buildAnchorMarker(anchor, true);
