@@ -85,7 +85,7 @@
             console.log("ratk",ratk)
             console.log("ratk.anchors",ratk.anchors)
 
-            ratk.createAnchor(anchorPosition, anchorQuaternion, false)
+            ratk.createAnchor(anchorPosition, anchorQuaternion, true)
                 .then((anchor /* RATK Anchor object extends Object3D */) => {
                     buildAnchorMarker(anchor, false);
                 });
