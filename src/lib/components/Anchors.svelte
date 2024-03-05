@@ -11,6 +11,8 @@
     const vec3 = new THREE.Vector3()
     const group = new THREE.Group()
 
+    let enabled = false
+
     $: console.log("isPresenting", $isPresenting)
 
 	const ratk = useRatk()
@@ -49,8 +51,10 @@
 
         console.log("anchor object", object)
 
-        // group.position.set(object.position.x, object.position.y, object.position.z)
-		// group.lookAt(0, 0, 0)
+        group.position.set(object.position.x, object.position.y, object.position.z)
+		group.lookAt(0, 0, 0)
+
+        enabled = true
         
 
 
@@ -133,6 +137,12 @@
 {#each objects as object}
 	<T is={object} visible={true}/>
 {/each}
+
+{#if enabled}
+	<T is={group}>
+		<slot />
+	</T>
+{/if}
 
 
 {#each anchors as anchor, index (index)}
