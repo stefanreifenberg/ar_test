@@ -85,8 +85,8 @@
           
             console.log("ratk.anchors length",ratk.anchors.length)
 
-            // if there are more than 7 anchors delete the first one
-            if(ratk.anchors.length > 7) {
+            // if there are more than 7 anchors in the ratk.anchors set then delete the first anchor
+            if(ratk.anchors.size > 7) {
                 console.log("deleting anchor")
                 ratk.deleteAnchor(ratk.anchors[0])
             }
