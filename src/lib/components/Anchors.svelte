@@ -49,6 +49,11 @@
 
 		const [object] = objects
 
+        if (!object) {
+			enabled = false
+			return
+		}
+
         console.log("anchor object", object)
 
         group.position.set(object.position.x, object.position.y, object.position.z)
