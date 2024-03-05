@@ -51,6 +51,8 @@
         group.position.set(object.position.x, object.position.y, object.position.z)
 		group.lookAt(0, 0, 0)
 
+        console.log("group", group)
+
         enabled = true
     }
 
@@ -96,17 +98,17 @@
 
 </script>
 
-{#each objects as object}
+<!-- {#each objects as object}
 	<T is={object} visible={true}/>
-{/each}
+{/each} -->
 
-<!-- {#if enabled}
+{#if enabled}
 	<T is={group}>
 		<slot />
 	</T>
 {/if}
 
-{#if anchors}
+<!-- {#if anchors}
     {#each anchors as anchor, index (index)}
     <T is={anchor} visible={true}/>
     {/each}
