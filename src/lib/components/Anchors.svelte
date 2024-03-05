@@ -13,15 +13,10 @@
 
     let enabled = false
 
-    $: console.log("isPresenting", $isPresenting)
-
 	const ratk = useRatk()
     let anchors = []
     let testAnchors = []
     let objects = []
-
-    $: console.log("anchors", anchors)
-    $: console.log("testAnchors", testAnchors)
 
     $: pendingAnchorsData = $pendingAnchorStoreData
 
@@ -40,7 +35,6 @@
         objects.splice(0, objects.length)
 
         for (const anchor of ratk.anchors) {
-            console.log("anchor", anchor)
             objects.push(anchor)
         }
 
@@ -53,8 +47,6 @@
 			enabled = false
 			return
 		}
-
-        console.log("anchor object", object)
 
         group.position.set(object.position.x, object.position.y, object.position.z)
 		group.lookAt(0, 0, 0)
@@ -133,11 +125,6 @@
    
 
 </script>
-
-<!-- {#each anchors as anchor}
-    
-	<T is={anchor} visible={true} />
-{/each} -->
 
 {#each objects as object}
 	<T is={object} visible={true}/>
