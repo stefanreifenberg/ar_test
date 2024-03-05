@@ -83,12 +83,15 @@
             // create an anchor
             console.log('creating anchor')
           
-            console.log("ratk.anchors length",ratk.anchors.length)
+            console.log("ratk.anchors size", ratk.anchors.size)
 
             // if there are more than 7 anchors in the ratk.anchors set then delete the first anchor
             if(ratk.anchors.size > 7) {
                 console.log("deleting anchor")
-                ratk.deleteAnchor(ratk.anchors[0])
+                ratk.anchors.forEach((anchor) => {
+                    console.log(anchor.anchorID);
+                    ratk.deleteAnchor(anchor);
+                });
             }
 
             ratk.createAnchor(anchorPosition, anchorQuaternion, true)
