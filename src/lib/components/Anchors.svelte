@@ -24,10 +24,9 @@
 
         anchors = [...ratk.anchors]
 
-        const geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
+        const geometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
         const material = new THREE.MeshBasicMaterial({
-            //color: isRecovered ? 0xff0000 : 0x00ff00,
-            color: 0x00ff00,
+            color: isRecovered ? 0xff0000 : 0x00ff00,
         });
         const cube = new THREE.Mesh(geometry, material);
         anchor.add(cube);
@@ -143,7 +142,7 @@
 
 {#if anchors}
     {#each anchors as anchor, index (index)}
-    <T is={anchor} />
+    <T is={anchor} visible={true}/>
     {/each}
 {/if}
 
