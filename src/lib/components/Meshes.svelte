@@ -62,7 +62,6 @@
 			}
 
 			objects = objects
-      console.log("meshes objects", objects)
 
 			const [object] = objects
 

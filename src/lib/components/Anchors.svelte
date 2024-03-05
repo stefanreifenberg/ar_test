@@ -15,7 +15,6 @@
 
 	const ratk = useRatk()
     let anchors = []
-    let testAnchors = []
     let objects = []
 
     $: pendingAnchorsData = $pendingAnchorStoreData
@@ -45,7 +44,7 @@
             enabled = false
             return
         }
-        
+
         console.log("object", object)
 
         group.position.set(object.position.x, object.position.y, object.position.z)
@@ -74,9 +73,9 @@
 
 </script>
 
-<!-- {#each objects as object}
+{#each objects as object}
 	<T is={object} visible={true}/>
-{/each} -->
+{/each}
 
 {#if enabled}
 	<T is={group}>
@@ -84,9 +83,9 @@
 	</T>
 {/if}
 
-<!-- {#if anchors}
+{#if anchors}
     {#each anchors as anchor, index (index)}
     <T is={anchor} visible={true}/>
     {/each}
-{/if} -->
+{/if}
 

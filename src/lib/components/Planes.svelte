@@ -14,7 +14,6 @@
 	const vec3 = new THREE.Vector3()
 
 	ratk.onPlaneAdded = (plane) => {
-        console.log("ratk.planes", ratk.planes)
 
 		planes = [...ratk.planes]
 
