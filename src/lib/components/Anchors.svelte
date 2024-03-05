@@ -55,26 +55,39 @@
     }
 
     let anchorsLoaded = false
-   
-    $: if(anchorsLoaded) {
-        console.log("all anchors loaded")
-        //start()
-        stop()
-    }
 
-    const { start, stop } = useTask((delta) => {
-    // do something
-      if($isPresenting && !anchorsLoaded) {
+    $: if($isPresenting && !anchorsLoaded) {
         console.log("initilizing persistent anchors")
         ratk.restorePersistentAnchors().then(() => {
                     console.log("ratk.anchors",ratk.anchors)
                     ratk.anchors.forEach((anchor) => {
                         buildAnchorMarker(anchor, true);
                     });
-                    anchorsLoaded = true
+                    
                 });
-      }
-    }, { autoStart: true })
+        anchorsLoaded = true
+    }
+   
+    // $: if(anchorsLoaded) {
+    //     console.log("all anchors loaded")
+    //     //start()
+    //     stop()
+    // }
+
+    // const { start, stop } = useTask((delta) => {
+    // // do something
+    //   if($isPresenting && !anchorsLoaded) {
+    //     console.log("initilizing persistent anchors")
+    //     ratk.restorePersistentAnchors().then(() => {
+    //                 console.log("ratk.anchors",ratk.anchors)
+    //                 ratk.anchors.forEach((anchor) => {
+    //                     buildAnchorMarker(anchor, true);
+    //                 });
+                    
+    //             });
+    //     anchorsLoaded = true
+    //   }
+    // }, { autoStart: false })
 
     useTask((delta) => {
         ratk.update()
