@@ -43,12 +43,12 @@
 		}
 	  }
 
-	  const handleSqueezeStart = (hand) => {
-		ratk.anchors.forEach((anchor) => {
-			console.log(anchor.anchorID);
-			ratk.deleteAnchor(anchor);
-		});
-}
+// 	  const handleSqueezeStart = (hand) => {
+// 		ratk.anchors.forEach((anchor) => {
+// 			console.log(anchor.anchorID);
+// 			ratk.deleteAnchor(anchor);
+// 		});
+// }
   
 	useHitTest(handleHitTest('left'), { source: 'leftInput' })
 	useHitTest(handleHitTest('right'), { source: 'rightInput' })
@@ -63,7 +63,7 @@
     <Controller
       {hand}
       on:select={handleSelect(hand)}
-	  on:squeezestart={handleSqueezeStart(hand)}
+	 
     />
     <Hand
       {hand}
