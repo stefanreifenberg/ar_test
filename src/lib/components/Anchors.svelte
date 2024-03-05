@@ -74,10 +74,10 @@
                     anchorsLoaded = true
                 });
       }
-       
     }, { autoStart: true })
 
     useTask((delta) => {
+        ratk.update()
 
        
 
@@ -128,8 +128,9 @@
 	</T>
 {/if}
 
-
-{#each anchors as anchor, index (index)}
-  <T is={anchor} />
-{/each}
+{#if anchors}
+    {#each anchors as anchor, index (index)}
+    <T is={anchor} />
+    {/each}
+{/if}
 
