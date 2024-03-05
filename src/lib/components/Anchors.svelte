@@ -38,7 +38,7 @@
         }
 
         objects = objects
-        console.log("anchor objects", objects)
+       //console.log("anchor objects", objects)
 
 		const [object] = objects
 
@@ -46,6 +46,7 @@
 			enabled = false
 			return
 		}
+        console.log("object", object)
 
         group.position.set(object.position.x, object.position.y, object.position.z)
 		group.lookAt(0, 0, 0)
